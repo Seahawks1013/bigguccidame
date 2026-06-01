@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BigGucciDame — WAVES · July 17</title>
+    <meta name="description" content="BigGucciDame. WAVES dropping July 17. Pre-save now. 12M+ streams. Florida Christian Hip-Hop." />
+    <meta property="og:title" content="BigGucciDame — WAVES Dropping July 17" />
+    <meta property="og:description" content="Pre-save WAVES now. 12M+ streams. Faith-driven rap from Florida." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://i.scdn.co/image/ab67616d0000b2738fefe2bbe166506b3410be6b" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="BigGucciDame — WAVES Dropping July 17" />
+    <meta name="twitter:image" content="https://i.scdn.co/image/ab67616d0000b2738fefe2bbe166506b3410be6b" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;900&family=Geist+Mono:wght@400;500&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet" />
+
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+      :root {
+        /* Palette sampled directly from hero.jpg:
+           deep near-black #07090e, dark blue-grey #0d1520,
+           muted slate #1c2d42, horizon blue #3a6080,
+           sky highlight #7ab0d4, bright white-blue #c8e0f0 */
+        --bg:        #07090e;
+        --bg2:       #0a0e18;
+        --navy:      #0d1520;
+        --blue-mid:  #1c2d42;
+        --blue:      #3a6080;
+        --blue-lt:   #7ab0d4;
+        --ice:       #c8e0f0;
+        --white:     #eaf4ff;
+        --text:      #b8cee0;
+        --text-dim:  #445566;
+        --border:    rgba(122,176,212,0.12);
+        --ease:      cubic-bezier(0.16,1,0.3,1);
+        --nav-h:     64px;
+        --font:      'Geist', sans-serif;
+        --mono:      'Geist Mono', monospace;
+        --tight:     'Inter Tight', sans-serif;
+      }
+
+      html { scroll-behavior: smooth; }
+      body { font-family: var(--font); background: var(--bg); color: var(--text); overflow-x: hidden; cursor: none; }
+      a { color: inherit; text-decoration: none; }
+      img { display: block; max-width: 100%; }
+
+      /* LOADER */
+      .loader { position:fixed; inset:0; z-index:9999; background:var(--bg); display:flex; align-items:center; justify-content:center; transition:opacity .7s var(--ease),visibility .7s; }
+      .loader.hidden { opacity:0; visibility:hidden; pointer-events:none; }
+      .loader-inner { display:flex; flex-direction:column; align-items:center; gap:28px; }
+      .loader-wm { font-size:clamp(1.4rem,5vw,2.8rem); font-weight:900; letter-spacing:.1em; text-transform:uppercase; background:linear-gradient(90deg,var(--blue),var(--ice),var(--blue)); background-size:200%; -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; animation:shimmer 2s linear infinite; }
+      @keyframes shimmer { to { background-position:200% center; } }
+      .loader-bar { width:180px; height:1px; background:rgba(255,255,255,.06); }
+      .loader-fill { height:100%; width:0%; background:linear-gradient(90deg,var(--blue),var(--ice)); animation:loadbar 1.5s var(--ease) forwards; }
+      @keyframes loadbar { to { width:100%; } }
+
+      /* CURSOR */
+      .cursor-dot  { position:fixed; top:0; left:0; width:5px; height:5px; background:var(--blue-lt); border-radius:50%; pointer-events:none; z-index:9998; transform:translate(-50%,-50%); }
+      .cursor-ring { position:fixed; top:0; left:0; width:32px; height:32px; border:1px solid rgba(91,156,246,.35); border-radius:50%; pointer-events:none; z-index:9997; transform:translate(-50%,-50%); transition:width .2s,height .2s; }
+      .cursor-ring.hover { width:48px; height:48px; border-color:var(--blue-lt); }
+
+      /* SCROLL BAR */
+      .scroll-bar { position:fixed; top:0; left:0; height:2px; width:0%; background:linear-gradient(90deg,var(--blue),var(--ice)); z-index:9000; transition:width .1s linear; }
+
+      /* NAV */
+      .nav { position:fixed; top:0; left:0; right:0; height:var(--nav-h); z-index:800; display:flex; align-items:center; justify-content:space-between; padding:0 clamp(20px,4vw,60px); transition:background .4s,backdrop-filter .4s; }
+      .nav.scrolled { background:rgba(7,9,14,.92); backdrop-filter:blur(20px); border-bottom:1px solid var(--border); }
+      .nav-wm { font-size:.95rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; background:linear-gradient(90deg,var(--blue-lt),var(--ice)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+      .nav-links { display:flex; gap:28px; align-items:center; }
+      .nav-links a { font-size:.78rem; font-weight:500; letter-spacing:.08em; text-transform:uppercase; color:var(--text-dim); transition:color .2s; }
+      .nav-links a:hover { color:var(--white); }
+      .nav-links a.hot { color:var(--blue-lt); }
+
+      /* BUTTONS */
+      .btn { display:inline-flex; align-items:center; gap:8px; font-family:var(--font); font-size:.84rem; font-weight:700; letter-spacing:.07em; text-transform:uppercase; padding:14px 28px; border-radius:4px; cursor:none; transition:transform .2s var(--ease),box-shadow .2s; }
+      .btn:hover { transform:translateY(-2px); }
+      .btn-blue { background:linear-gradient(135deg,var(--blue),#1a52c0); color:#fff; box-shadow:0 6px 28px rgba(58,96,128,.4); }
+      .btn-blue:hover { box-shadow:0 12px 40px rgba(58,96,128,.55); }
+      .btn-ghost { background:transparent; color:var(--text); border:1px solid rgba(255,255,255,.15); }
+      .btn-ghost:hover { border-color:var(--blue-lt); color:var(--blue-lt); }
+      .btn-presave { background:linear-gradient(135deg,var(--blue-lt),#2a5570); color:#fff; border-radius:50px; box-shadow:0 8px 40px rgba(58,96,128,.45); position:relative; overflow:hidden; }
+      .btn-presave::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg,rgba(255,255,255,.15),transparent); opacity:0; transition:opacity .3s; }
+      .btn-presave:hover::before { opacity:1; }
+      .btn-presave:hover { box-shadow:0 14px 50px rgba(122,176,212,.4); transform:translateY(-3px); }
+
+      /* REVEALS */
+      .rv-up    { opacity:0; transform:translateY(28px); transition:opacity .7s var(--ease),transform .7s var(--ease); }
+      .rv-left  { opacity:0; transform:translateX(-40px); transition:opacity .7s var(--ease),transform .7s var(--ease); }
+      .rv-right { opacity:0; transform:translateX(40px); transition:opacity .7s var(--ease),transform .7s var(--ease); }
+      .rv-scale { opacity:0; transform:scale(.94); transition:opacity .7s var(--ease),transform .7s var(--ease); }
+      .rv-up.v,.rv-left.v,.rv-right.v,.rv-scale.v { opacity:1; transform:none; }
+      [style*="--d"] { transition-delay:var(--d,0s); }
+
+      /* HERO */
+      .hero { position:relative; min-height:100svh; display:flex; align-items:flex-end; padding:0 clamp(20px,5vw,80px) clamp(60px,8vw,100px); overflow:hidden; }
+      .hero-bg { position:absolute; inset:0; z-index:0; overflow:hidden; }
+      .blob { position:absolute; border-radius:50%; filter:blur(100px); animation:drift 14s ease-in-out infinite; }
+      .b1 { width:800px; height:800px; background:#0d1e35; opacity:.6; top:-300px; left:-200px; }
+      .b2 { width:500px; height:500px; background:#1a3050; opacity:.4; top:15%; right:-100px; animation-delay:-5s; }
+      .b3 { width:600px; height:600px; background:#050d20; opacity:.8; bottom:-200px; left:20%; animation-delay:-9s; }
+      .b4 { width:300px; height:300px; background:#3a6080; opacity:.12; bottom:25%; right:8%; animation-delay:-12s; }
+      @keyframes drift { 0%,100%{transform:translate(0,0) scale(1)} 33%{transform:translate(30px,-25px) scale(1.04)} 66%{transform:translate(-15px,18px) scale(.97)} }
+      .hero-aurora { position:absolute; inset:0; background:radial-gradient(ellipse 110% 55% at 45% 0%,rgba(58,96,128,.18),transparent 65%); pointer-events:none; }
+      .hero-scan { position:absolute; inset:0; z-index:1; background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,20,60,.025) 2px,rgba(0,20,60,.025) 4px); pointer-events:none; }
+      .hero-port { position:absolute; inset:0; z-index:1; }
+      .hero-port img { width:100%; height:100%; object-fit:cover; object-position:center top; filter:brightness(.92) saturate(.8); }
+      .hero-port::after { content:''; position:absolute; inset:0; background:linear-gradient(to bottom,rgba(7,9,14,.15) 0%,rgba(7,9,14,.02) 20%,rgba(7,9,14,.7) 65%,rgba(7,9,14,.98) 100%); }
+      .hero-grain { position:absolute; inset:0; z-index:2; opacity:.03; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-size:128px; pointer-events:none; }
+      .hero-vig  { position:absolute; inset:0; z-index:2; background:radial-gradient(ellipse 80% 80% at 50% 50%,transparent 40%,rgba(5,8,15,.6) 100%); pointer-events:none; }
+      .hero-cnt  { position:relative; z-index:3; max-width:860px; }
+      .hero-pre  { font-family:var(--mono); font-size:.72rem; letter-spacing:.22em; text-transform:uppercase; color:var(--blue-lt); margin-bottom:14px; }
+      .hero-title { font-size:clamp(3rem,9vw,8.5rem); font-weight:900; line-height:1; letter-spacing:-.02em; text-transform:uppercase; margin-bottom:20px; white-space:nowrap; opacity:0; transform:translateY(20px); animation:titleIn .9s var(--ease) 1.4s forwards; }
+      @keyframes titleIn { to { opacity:1; transform:translateY(0); } }
+      .hero-title .wg { background:linear-gradient(90deg,var(--blue-lt),var(--ice)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+      .hero-tag  { font-size:clamp(.85rem,1.8vw,1rem); color:var(--text-dim); letter-spacing:.05em; margin-bottom:36px; font-family:var(--tight); }
+      .hero-cta  { display:flex; gap:14px; flex-wrap:wrap; }
+      .badge { display:inline-flex; align-items:center; gap:10px; background:rgba(45,107,228,.12); border:1px solid rgba(91,156,246,.25); border-radius:4px; padding:10px 18px; margin-bottom:22px; font-family:var(--mono); font-size:.7rem; letter-spacing:.15em; text-transform:uppercase; color:var(--ice); opacity:0; animation:fin .6s 2s forwards; }
+      .pulse { width:6px; height:6px; border-radius:50%; background:var(--blue-lt); animation:pd 1.5s ease-in-out infinite; }
+      @keyframes pd { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.7)} }
+      @keyframes fin { to { opacity:1; } }
+      .scroll-ind { position:absolute; bottom:36px; right:clamp(20px,5vw,80px); z-index:3; display:flex; flex-direction:column; align-items:center; gap:8px; color:var(--text-dim); font-family:var(--mono); font-size:.62rem; letter-spacing:.15em; text-transform:uppercase; animation:fin 1s 2.5s both; }
+      .sdot { animation:sbob 1.6s ease-in-out infinite; }
+      @keyframes sbob { 0%,100%{cy:8} 50%{cy:14} }
+
+      /* WAVES FULL SECTION */
+      .waves-sec {
+        background:linear-gradient(180deg,var(--bg) 0%,var(--navy) 40%,#0c1a28 70%,var(--bg2) 100%);
+        padding:clamp(80px,10vw,140px) clamp(20px,5vw,80px);
+        position:relative; overflow:hidden; text-align:center;
+      }
+      .waves-sec::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(58,96,128,.16),transparent 70%); pointer-events:none; }
+      .wave-rings { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; pointer-events:none; overflow:hidden; }
+      .wr { position:absolute; border-radius:50%; border:1px solid rgba(58,96,128,.14); animation:wex 4s ease-out infinite; }
+      .wr:nth-child(1){width:300px;height:300px;animation-delay:0s}
+      .wr:nth-child(2){width:550px;height:550px;animation-delay:1s}
+      .wr:nth-child(3){width:800px;height:800px;animation-delay:2s}
+      .wr:nth-child(4){width:1050px;height:1050px;animation-delay:3s}
+      @keyframes wex { 0%{opacity:.4;transform:scale(.8)} 100%{opacity:0;transform:scale(1.2)} }
+      .waves-inner { position:relative; max-width:720px; margin:0 auto; }
+      .waves-label { font-family:var(--mono); font-size:.72rem; letter-spacing:.25em; text-transform:uppercase; color:var(--blue-lt); margin-bottom:20px; display:block; }
+      .waves-big {
+        font-size:clamp(5rem,18vw,15rem); font-weight:900; letter-spacing:.06em; text-transform:uppercase; line-height:.9;
+        background:linear-gradient(180deg,#fff 0%,var(--ice) 35%,var(--blue-lt) 65%,var(--blue) 100%);
+        -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+        margin-bottom:24px; filter:drop-shadow(0 0 60px rgba(45,107,228,.4));
+      }
+      .waves-date { font-family:var(--mono); font-size:.9rem; letter-spacing:.2em; color:var(--text-dim); text-transform:uppercase; margin-bottom:20px; }
+      .waves-date span { color:var(--white); font-weight:600; }
+
+      /* COUNTDOWN */
+      .cd { display:flex; gap:0; justify-content:center; margin-bottom:44px; }
+      .cd-unit { display:flex; flex-direction:column; align-items:center; padding:20px clamp(16px,3vw,32px); background:rgba(10,22,40,.85); border:1px solid rgba(45,107,228,.22); position:relative; }
+      .cd-unit:not(:last-child)::after { content:''; position:absolute; right:-1px; top:15%; bottom:15%; width:1px; background:rgba(58,96,128,.18); z-index:1; }
+      .cd-unit:first-child { border-radius:8px 0 0 8px; }
+      .cd-unit:last-child  { border-radius:0 8px 8px 0; }
+      .cd-num { font-size:clamp(1.8rem,4vw,3rem); font-weight:900; color:#fff; line-height:1; font-variant-numeric:tabular-nums; min-width:2ch; text-align:center; }
+      .cd-lbl { font-family:var(--mono); font-size:.6rem; letter-spacing:.15em; text-transform:uppercase; color:var(--text-dim); margin-top:6px; }
+
+      .waves-btns { display:flex; flex-direction:column; align-items:center; gap:14px; }
+      .waves-sub-txt { font-family:var(--mono); font-size:.68rem; letter-spacing:.1em; text-transform:uppercase; color:var(--text-dim); }
+
+      /* SECTION LABEL */
+      .sec-lbl { font-family:var(--mono); font-size:.7rem; letter-spacing:.2em; text-transform:uppercase; color:var(--blue-lt); margin-bottom:40px; display:flex; align-items:center; gap:12px; }
+      .sec-lbl::before { content:attr(data-n); color:var(--text-dim); }
+      .sec-lbl::after  { content:''; flex:1; height:1px; background:var(--border); }
+
+      /* SONG SECTION */
+      .song-sec { padding:clamp(80px,10vw,140px) clamp(20px,5vw,80px); background:var(--bg2); }
+      .song-grid { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:clamp(40px,6vw,100px); align-items:center; }
+      .cover-wrap { position:relative; border-radius:6px; overflow:hidden; box-shadow:0 30px 80px rgba(0,0,0,.7),0 0 60px rgba(58,96,128,.12); aspect-ratio:1; background:#050d1e; }
+      .cover-wrap img { width:100%; height:100%; object-fit:cover; }
+      .cover-ph { width:100%; aspect-ratio:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; background:linear-gradient(135deg,#050d1e,#0a1628); color:rgba(255,255,255,.2); font-family:var(--mono); font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; }
+      .cover-ph-icon { font-size:3.5rem; opacity:.3; }
+      .cover-glow { position:absolute; inset:-20px; background:radial-gradient(ellipse 70% 70% at 50% 50%,rgba(58,96,128,.18),transparent 70%); pointer-events:none; z-index:-1; }
+      .song-title { font-size:clamp(2.2rem,4.5vw,4rem); font-weight:900; line-height:1; color:var(--white); margin-bottom:8px; letter-spacing:-.02em; }
+      .song-title .ac { background:linear-gradient(90deg,var(--blue-lt),var(--ice)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+      .song-sub { font-family:var(--mono); font-size:.75rem; letter-spacing:.12em; color:var(--text-dim); text-transform:uppercase; margin-bottom:32px; }
+      .dsp-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:32px; }
+      .dsp { display:flex; align-items:center; gap:10px; padding:13px 16px; border-radius:5px; font-size:.8rem; font-weight:600; letter-spacing:.03em; transition:transform .2s var(--ease),box-shadow .2s; cursor:none; }
+      .dsp:hover { transform:translateY(-2px); }
+      .dsp-sp { background:#1DB954; color:#fff; }
+      .dsp-sp:hover { box-shadow:0 8px 24px rgba(29,185,84,.35); }
+      .dsp-ap { background:#000; color:#fff; border:1px solid rgba(255,255,255,.12); }
+      .dsp-ap:hover { box-shadow:0 8px 24px rgba(0,0,0,.5); }
+      .dsp-am { background:#232F3E; color:#FF9900; }
+      .dsp-am:hover { box-shadow:0 8px 24px rgba(35,47,62,.5); }
+      .dsp-yt { background:#FF0000; color:#fff; }
+      .dsp-yt:hover { box-shadow:0 8px 24px rgba(255,0,0,.35); }
+      .embed-lbl { font-family:var(--mono); font-size:.68rem; letter-spacing:.15em; text-transform:uppercase; color:var(--text-dim); margin-bottom:10px; }
+
+      /* MUSIC */
+      .music-sec { padding:clamp(80px,10vw,140px) clamp(20px,5vw,80px); background:var(--bg); }
+      .music-inner { max-width:1100px; margin:0 auto; }
+      .music-sec iframe { border-radius:12px; margin-bottom:32px; }
+      .stream-links { display:flex; gap:24px; flex-wrap:wrap; }
+      .sl { display:flex; align-items:center; gap:8px; font-size:.8rem; font-weight:500; color:var(--text-dim); transition:color .2s; }
+      .sl:hover { color:var(--blue-lt); }
+
+      /* VIDEOS */
+      .vid-sec { padding:clamp(80px,10vw,140px) 0; background:var(--bg2); }
+      .vid-head { padding:0 clamp(20px,5vw,80px); max-width:1200px; margin:0 auto 48px; }
+      .vid-sub { font-size:.88rem; color:var(--text-dim); margin-top:8px; font-family:var(--tight); }
+      .vid-scroll { display:flex; gap:18px; padding:0 clamp(20px,5vw,80px); overflow-x:auto; scrollbar-width:none; max-width:1200px; margin:0 auto; }
+      .vid-scroll::-webkit-scrollbar { display:none; }
+      .vid-card { flex-shrink:0; width:clamp(260px,28vw,360px); border-radius:6px; overflow:hidden; background:var(--navy); cursor:none; border:1px solid var(--border); }
+      .vid-link { display:block; position:relative; }
+      .vid-thumb { width:100%; aspect-ratio:16/9; object-fit:cover; transition:transform .4s var(--ease),filter .4s; filter:saturate(.7); }
+      .vid-card:hover .vid-thumb { transform:scale(1.04); filter:saturate(1); }
+      .vid-play { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; opacity:0; transition:opacity .3s; }
+      .vid-card:hover .vid-play { opacity:1; }
+      .vid-ttl { display:block; padding:12px 14px; font-size:.78rem; font-weight:600; letter-spacing:.04em; text-transform:uppercase; color:var(--text-dim); transition:color .2s; }
+      .vid-card:hover .vid-ttl { color:var(--blue-lt); }
+      .vid-cta { padding:44px clamp(20px,5vw,80px) 0; max-width:1200px; margin:0 auto; }
+
+      /* ABOUT */
+      .about-sec { padding:clamp(80px,10vw,140px) clamp(20px,5vw,80px); background:var(--bg); }
+      .about-grid { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1.1fr; gap:clamp(40px,6vw,90px); align-items:center; }
+      .ah { font-size:clamp(1.8rem,3.5vw,3rem); font-weight:900; line-height:1.1; letter-spacing:-.02em; margin-bottom:20px; }
+      .ah em { font-style:normal; background:linear-gradient(90deg,var(--blue-lt),var(--ice)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+      .ab { font-size:.97rem; line-height:1.75; color:var(--text-dim); margin-bottom:18px; }
+      .stats { display:flex; gap:36px; margin-top:36px; flex-wrap:wrap; }
+      .sn { font-size:2rem; font-weight:700; background:linear-gradient(90deg,var(--blue-lt),var(--ice)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; line-height:1; margin-bottom:4px; }
+      .sl2 { font-family:var(--mono); font-size:.68rem; letter-spacing:.1em; text-transform:uppercase; color:var(--text-dim); }
+      .origin { display:flex; align-items:center; gap:14px; margin-top:28px; font-family:var(--mono); font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; color:var(--text-dim); }
+      .qblock { background:linear-gradient(135deg,rgba(58,96,128,.07),rgba(58,96,128,.02)); border:1px solid rgba(58,96,128,.18); border-radius:6px; padding:clamp(28px,4vw,48px); }
+      .qmark { font-size:5rem; line-height:.5; color:var(--blue-lt); opacity:.22; font-family:Georgia,serif; margin-bottom:18px; display:block; }
+      .qtext { font-size:clamp(1rem,1.8vw,1.3rem); font-style:italic; line-height:1.65; color:var(--text); margin-bottom:14px; }
+      .qattr { font-family:var(--mono); font-size:.68rem; letter-spacing:.15em; text-transform:uppercase; color:var(--blue-lt); }
+
+      /* SIGNUP */
+      .signup-sec { padding:clamp(80px,10vw,140px) clamp(20px,5vw,80px); background:var(--navy); position:relative; overflow:hidden; }
+      .signup-sec::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 60% 60% at 50% 50%,rgba(45,107,228,.1),transparent 70%); pointer-events:none; }
+      .signup-inner { max-width:580px; margin:0 auto; text-align:center; position:relative; }
+      .signup-h { font-size:clamp(1.5rem,3vw,2.2rem); font-weight:700; color:var(--white); margin-bottom:10px; letter-spacing:-.02em; line-height:1.2; }
+      .signup-s { font-size:.9rem; color:var(--text-dim); margin-bottom:32px; font-family:var(--tight); }
+
+      /* FOOTER */
+      .footer { background:#030508; border-top:1px solid var(--border); padding:44px clamp(20px,5vw,80px); }
+      .footer-inner { max-width:1100px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:20px; }
+      .fw { font-size:.9rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; background:linear-gradient(90deg,var(--blue-lt),var(--ice)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+      .fsoc { display:flex; gap:18px; align-items:center; }
+      .fsoc a { color:var(--text-dim); transition:color .2s,transform .2s; display:flex; }
+      .fsoc a:hover { color:var(--blue-lt); transform:translateY(-2px); }
+      .fi { font-size:.74rem; color:var(--text-dim); font-family:var(--mono); letter-spacing:.05em; }
+
+      /* MOBILE */
+      @media (max-width:767px) {
+        body { cursor:auto; }
+        .cursor-dot,.cursor-ring { display:none; }
+        .nav-links { gap:14px; }
+        .nav-links a { font-size:.7rem; }
+        .hero-title { font-size:clamp(2rem,12vw,5rem); white-space:normal; }
+        .song-grid { grid-template-columns:1fr; }
+        .about-grid { grid-template-columns:1fr; }
+        .about-vis { display:none; }
+        .dsp-grid { grid-template-columns:1fr; }
+        .footer-inner { flex-direction:column; align-items:flex-start; gap:14px; }
+        .cd { flex-wrap:wrap; gap:8px; }
+        .cd-unit { border-radius:8px !important; }
+        .cd-unit::after { display:none !important; }
+        .waves-big { font-size:clamp(4rem,20vw,7rem); }
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- LOADER -->
+    <div class="loader" id="loader">
+      <div class="loader-inner">
+        <div class="loader-wm">BigGucciDame</div>
+        <div class="loader-bar"><div class="loader-fill"></div></div>
+      </div>
+    </div>
+
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+    <div class="scroll-bar" id="scrollBar"></div>
+
+    <!-- NAV -->
+    <nav class="nav" id="nav">
+      <a href="#hero" class="nav-wm">BigGucciDame</a>
+      <div class="nav-links">
+        <a href="#waves" class="hot">WAVES ↗</a>
+        <a href="#music">Music</a>
+        <a href="#videos">Videos</a>
+        <a href="#about">About</a>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+      <div class="hero-bg">
+        <div class="blob b1"></div>
+        <div class="blob b2"></div>
+        <div class="blob b3"></div>
+        <div class="blob b4"></div>
+      </div>
+      <div class="hero-port" id="heroPort">
+        <img src="hero.jpg" alt="BigGucciDame" decoding="async" fetchpriority="high" onerror="this.style.display='none'" />
+      </div>
+      <div class="hero-grain"></div>
+      <div class="hero-aurora"></div>
+      <div class="hero-scan"></div>
+      <div class="hero-vig"></div>
+
+      <div class="hero-cnt">
+        <div class="badge"><div class="pulse"></div>WAVES — Pre-Save Now · July 17</div>
+        <p class="hero-pre rv-up">Florida · Christian Hip-Hop · 12M+ Streams</p>
+        <h1 class="hero-title"><span>Big</span><span class="wg">Gucci</span><span>Dame</span></h1>
+        <p class="hero-tag rv-up">Faith-Driven Rap — OLD LENS — Out Now</p>
+        <div class="hero-cta rv-up">
+          <a href="https://open.spotify.com/prerelease/6a1LkbzPNVEwSV0jAz0SCN?si=b1615d828d384bee" target="_blank" rel="noopener" class="btn btn-presave" style="font-size:.9rem;padding:16px 36px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+            Pre-Save WAVES
+          </a>
+          <a href="https://open.spotify.com/artist/6mjDlBKzYcYavIYfOfQLKi" target="_blank" rel="noopener" class="btn btn-ghost">Listen on Spotify</a>
+        </div>
+      </div>
+
+      <div class="scroll-ind">
+        <span>Scroll</span>
+        <svg width="16" height="24" viewBox="0 0 16 24" fill="none">
+          <rect x="1" y="1" width="14" height="22" rx="7" stroke="currentColor" stroke-width="1.5"/>
+          <circle class="sdot" cx="8" cy="8" r="2" fill="currentColor"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         WAVES — THE BIG PRE-SAVE MOMENT
+    ══════════════════════════════════════ -->
+    <section class="waves-sec" id="waves">
+      <div class="wave-rings">
+        <div class="wr"></div><div class="wr"></div><div class="wr"></div><div class="wr"></div>
+      </div>
+      <div class="waves-inner">
+        <span class="waves-label rv-up">New Album · Coming Soon</span>
+        <div class="waves-big rv-up">WAVES</div>
+        <p class="waves-date rv-up">Releases <span>July 17, 2026</span></p>
+
+        <div class="cd rv-up" id="cd">
+          <div class="cd-unit"><div class="cd-num" id="cdd">--</div><div class="cd-lbl">Days</div></div>
+          <div class="cd-unit"><div class="cd-num" id="cdh">--</div><div class="cd-lbl">Hours</div></div>
+          <div class="cd-unit"><div class="cd-num" id="cdm">--</div><div class="cd-lbl">Minutes</div></div>
+          <div class="cd-unit"><div class="cd-num" id="cds">--</div><div class="cd-lbl">Seconds</div></div>
+        </div>
+
+        <div class="waves-btns rv-up">
+          <a href="https://open.spotify.com/prerelease/6a1LkbzPNVEwSV0jAz0SCN?si=b1615d828d384bee" target="_blank" rel="noopener" class="btn btn-presave" style="font-size:1.05rem;padding:20px 60px;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+            Pre-Save on Spotify
+          </a>
+          <span class="waves-sub-txt">Save now · Be first to hear it July 17</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SONG — Rich in Christ -->
+    <section class="song-sec" id="song">
+      <div class="song-grid">
+        <div class="rv-left">
+          <div class="cover-wrap">
+            <img src="cover.jpg" alt="OLD LENS" loading="lazy" decoding="async"
+                 onerror="this.src='https://i.scdn.co/image/ab67616d0000b2738fefe2bbe166506b3410be6b';this.onerror=null" />
+            <div class="cover-ph" style="display:none"><div class="cover-ph-icon">🎵</div><span>OLD LENS</span></div>
+          </div>
+          <div class="cover-glow"></div>
+        </div>
+
+        <div class="rv-right">
+          <h2 class="sec-lbl rv-up" data-n="01.">Featured Track</h2>
+          <h2 class="song-title rv-up"><span class="ac">OLD</span> LENS</h2>
+          <p class="song-sub rv-up">BigGucciDame · 2026 · Stream Now</p>
+          <div class="dsp-grid rv-up">
+            <a href="https://open.spotify.com/track/4rINopdbpLkEaokXphw0d8" target="_blank" rel="noopener" class="dsp dsp-sp">
+              <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+              Spotify
+            </a>
+            <a href="https://music.apple.com/us/album/old-lens/1" target="_blank" rel="noopener" class="dsp dsp-ap">
+              <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M23.994 6.124a9.23 9.23 0 00-.24-2.19c-.317-1.31-1.062-2.31-2.18-3.043H5.986c-.747.043-1.49.123-2.193.4-1.336.53-2.3 1.452-2.865 2.78C.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98C23.986 15.668 24 15.259 24 12c0-3.259-.014-3.667-.072-4.947z"/></svg>
+              Apple Music
+            </a>
+            <a href="https://music.amazon.com/" target="_blank" rel="noopener" class="dsp dsp-am">
+              <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M.045 18.02c.072-.116.187-.124.348-.022 3.636 2.11 7.594 3.166 11.87 3.166 2.852 0 5.668-.533 8.447-1.595l.315-.14c.226-.088.39-.046.525.13.12.174.09.336-.12.48-1.244.743-2.64 1.316-4.185 1.726a17.617 17.617 0 01-10.951-.577 17.88 17.88 0 01-5.43-3.35c-.1-.074-.151-.15-.151-.22 0-.047.021-.09.051-.13z"/></svg>
+              Amazon Music
+            </a>
+            <a href="https://music.youtube.com/" target="_blank" rel="noopener" class="dsp dsp-yt">
+              <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M12 0C5.376 0 0 5.376 0 12s5.376 12 12 12 12-5.376 12-12S18.624 0 12 0zm0 19.104c-3.924 0-7.104-3.18-7.104-7.104S8.076 4.896 12 4.896s7.104 3.18 7.104 7.104-3.18 7.104-7.104 7.104zM9.684 15.54V8.46L15.816 12l-6.132 3.54z"/></svg>
+              YouTube Music
+            </a>
+          </div>
+          <div class="rv-up">
+            <p class="embed-lbl">Listen now</p>
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4rINopdbpLkEaokXphw0d8?utm_source=generator&theme=0" width="100%" height="152" frameborder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MUSIC -->
+    <section class="music-sec" id="music">
+      <div class="music-inner">
+        <h2 class="sec-lbl rv-up" data-n="02.">Music</h2>
+        <div class="rv-scale">
+          <iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/6mjDlBKzYcYavIYfOfQLKi?utm_source=generator&theme=0" width="100%" height="352" frameborder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
+        <div class="stream-links rv-up" style="margin-top:32px;">
+          <a href="https://open.spotify.com/artist/6mjDlBKzYcYavIYfOfQLKi" target="_blank" rel="noopener" class="sl"><svg viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg> Spotify</a>
+          <a href="https://music.apple.com/us/album/old-lens/1" target="_blank" rel="noopener" class="sl"><svg viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M23.994 6.124a9.23 9.23 0 00-.24-2.19c-.317-1.31-1.062-2.31-2.18-3.043H5.986c-.747.043-1.49.123-2.193.4-1.336.53-2.3 1.452-2.865 2.78C.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98C23.986 15.668 24 15.259 24 12c0-3.259-.014-3.667-.072-4.947z"/></svg> Apple Music</a>
+          <a href="https://www.youtube.com/watch?v=pzdfPp1KNtg" target="_blank" rel="noopener" class="sl"><svg viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg> YouTube</a>
+          <a href="https://instagram.com/bigguccidame/" target="_blank" rel="noopener" class="sl"><svg viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92C.014 15.668 0 15.259 0 12c0-3.259.014-3.667.072-4.947.196-4.354 2.617-6.78 6.979-6.98C8.333.014 8.741 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg> Instagram</a>
+          <a href="https://twitter.com/dame_gucci" target="_blank" rel="noopener" class="sl"><svg viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> Twitter / X</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIDEOS -->
+    <section class="vid-sec" id="videos">
+      <div class="vid-head">
+        <h2 class="sec-lbl rv-up" data-n="03.">Videos</h2>
+        <p class="vid-sub rv-up">Latest visuals &amp; releases</p>
+      </div>
+      <div class="vid-scroll">
+        <div class="vid-card rv-scale">
+          <a href="https://www.youtube.com/watch?v=pzdfPp1KNtg" target="_blank" rel="noopener" class="vid-link">
+            <img src="https://img.youtube.com/vi/pzdfPp1KNtg/hqdefault.jpg" alt="Rich in Christ" class="vid-thumb" loading="lazy" />
+            <div class="vid-play"><svg viewBox="0 0 68 48" width="68" height="48"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55C3.97 2.33 2.27 4.81 1.48 7.74.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="rgba(255,255,255,0.9)"/><path d="M45 24L27 14v20" fill="#050d1e"/></svg></div>
+            <span class="vid-ttl">Rich in Christ</span>
+          </a>
+        </div>
+        <div class="vid-card rv-scale" style="--d:.15s">
+          <a href="https://www.youtube.com/watch?v=i3_WDa4tYGg" target="_blank" rel="noopener" class="vid-link">
+            <img src="https://img.youtube.com/vi/i3_WDa4tYGg/hqdefault.jpg" alt="Rich in Christ Audio" class="vid-thumb" loading="lazy" />
+            <div class="vid-play"><svg viewBox="0 0 68 48" width="68" height="48"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55C3.97 2.33 2.27 4.81 1.48 7.74.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="rgba(255,255,255,0.9)"/><path d="M45 24L27 14v20" fill="#050d1e"/></svg></div>
+            <span class="vid-ttl">Rich in Christ (Official Audio)</span>
+          </a>
+        </div>
+        <div class="vid-card rv-scale" style="--d:.3s">
+          <a href="https://www.youtube.com/@bigguccidame" target="_blank" rel="noopener" class="vid-link">
+            <div style="width:100%;aspect-ratio:16/9;background:linear-gradient(135deg,#050d1e,#0a1a3a);display:flex;align-items:center;justify-content:center;color:rgba(91,156,246,.25);font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;">More Videos</div>
+            <div class="vid-play"><svg viewBox="0 0 68 48" width="68" height="48"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55C3.97 2.33 2.27 4.81 1.48 7.74.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="rgba(255,255,255,0.9)"/><path d="M45 24L27 14v20" fill="#050d1e"/></svg></div>
+            <span class="vid-ttl">View All Videos →</span>
+          </a>
+        </div>
+      </div>
+      <div class="vid-cta rv-up">
+        <a href="https://www.youtube.com/@bigguccidame" target="_blank" rel="noopener" class="btn btn-ghost">View All on YouTube</a>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about-sec" id="about">
+      <div class="about-grid">
+        <div class="about-txt">
+          <h2 class="sec-lbl rv-up" data-n="04.">About</h2>
+          <h3 class="ah rv-up"><em>Faith as the<br>Foundation</em></h3>
+          <p class="ab rv-up">BigGucciDame is an independent Florida artist blending melodic rap, transparent storytelling, and Christ-centered themes. Through consistency and an expanding catalog, he's emerged as a rising voice in Christian hip-hop with over 12 million streams across platforms.</p>
+          <p class="ab rv-up">Known for records like "God Provides," "Rich in Christ," and "Road to Heaven" — his music hits hard while staying rooted in authenticity, ambition, and perseverance.</p>
+          <div class="origin rv-up"><span style="font-size:1.4rem">📍</span> Florida · Independent · Christian Hip-Hop</div>
+          <div class="stats rv-up">
+            <div><div class="sn">12M+</div><div class="sl2">Total Streams</div></div>
+            <div><div class="sn">40K</div><div class="sl2">Monthly Listeners</div></div>
+            <div><div class="sn">774K</div><div class="sl2">Rich in Christ</div></div>
+          </div>
+        </div>
+        <div class="about-vis rv-right">
+          <div class="qblock">
+            <span class="qmark">"</span>
+            <p class="qtext">Faith serves as both the foundation and driving force. Building a catalog rooted in substance, intention, and impact.</p>
+            <span class="qattr">— BigGucciDame</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SIGNUP / CTA -->
+    <section class="signup-sec" id="signup">
+      <div class="signup-inner">
+        <p class="signup-h rv-up">Stay first in the wave</p>
+        <p class="signup-s rv-up">Pre-save WAVES · get notified July 17 · direct from Dame.</p>
+        <div class="rv-scale" style="display:flex;justify-content:center;">
+          <a href="https://open.spotify.com/prerelease/6a1LkbzPNVEwSV0jAz0SCN?si=b1615d828d384bee" target="_blank" rel="noopener" class="btn btn-presave" style="font-size:1rem;padding:18px 52px;">
+            Pre-Save WAVES Now
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-inner">
+        <div class="fw">BigGucciDame</div>
+        <div class="fsoc">
+          <a href="https://open.spotify.com/artist/6mjDlBKzYcYavIYfOfQLKi" target="_blank" rel="noopener" aria-label="Spotify"><svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg></a>
+          <a href="https://instagram.com/bigguccidame/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92C.014 15.668 0 15.259 0 12c0-3.259.014-3.667.072-4.947.196-4.354 2.617-6.78 6.979-6.98C8.333.014 8.741 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+          <a href="https://twitter.com/dame_gucci" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="https://www.youtube.com/@bigguccidame" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+        </div>
+        <div class="fi">© 2026 BigGucciDame · All Rights Reserved</div>
+      </div>
+    </footer>
+
+    <svg style="position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:9990;opacity:0.02;" aria-hidden="true">
+      <filter id="nf"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
+      <rect width="100%" height="100%" filter="url(#nf)"/>
+    </svg>
+
+    <script>
+      // LOADER
+      window.addEventListener('load', () => setTimeout(() => document.getElementById('loader').classList.add('hidden'), 1600));
+
+      // CURSOR
+      const dot=document.getElementById('cursorDot'), ring=document.getElementById('cursorRing');
+      let mx=0,my=0,rx=0,ry=0;
+      document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; dot.style.left=mx+'px'; dot.style.top=my+'px'; });
+      (function a(){ rx+=(mx-rx)*.12; ry+=(my-ry)*.12; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(a); })();
+      document.querySelectorAll('a,button,.btn,.dsp').forEach(el => { el.addEventListener('mouseenter',()=>ring.classList.add('hover')); el.addEventListener('mouseleave',()=>ring.classList.remove('hover')); });
+
+      // SCROLL
+      const bar=document.getElementById('scrollBar'), nav=document.getElementById('nav');
+      window.addEventListener('scroll', () => {
+        bar.style.width=(window.scrollY/(document.body.scrollHeight-window.innerHeight)*100)+'%';
+        nav.classList.toggle('scrolled', window.scrollY>60);
+        if(window.scrollY<window.innerHeight) document.getElementById('heroPort').style.transform=`translateY(${window.scrollY*.3}px)`;
+      }, {passive:true});
+
+      // REVEALS
+      document.querySelectorAll('.rv-up,.rv-left,.rv-right,.rv-scale').forEach(el =>
+        new IntersectionObserver(entries => entries.forEach(e => e.isIntersecting && e.target.classList.add('v')), {threshold:.1}).observe(el)
+      );
+
+      // COUNTDOWN — July 17, 2026 midnight ET
+      function tick() {
+        const t = new Date('2026-07-17T00:00:00-05:00') - new Date();
+        if(t<=0){ ['cdd','cdh','cdm','cds'].forEach(id=>document.getElementById(id).textContent='00'); return; }
+        document.getElementById('cdd').textContent=String(Math.floor(t/86400000)).padStart(2,'0');
+        document.getElementById('cdh').textContent=String(Math.floor(t%86400000/3600000)).padStart(2,'0');
+        document.getElementById('cdm').textContent=String(Math.floor(t%3600000/60000)).padStart(2,'0');
+        document.getElementById('cds').textContent=String(Math.floor(t%60000/1000)).padStart(2,'0');
+      }
+      tick(); setInterval(tick,1000);
+    </script>
+  </body>
+</html>
