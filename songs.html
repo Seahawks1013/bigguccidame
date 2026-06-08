@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WAVES · Tracklist — BigGucciDame</title>
+    <meta name="description" content="WAVES — 9 tracks. Fully Mixed & Mastered. Florida Christian Hip-Hop. July 17, 2026." />
+    <meta property="og:title" content="WAVES · Tracklist — BigGucciDame" />
+    <meta property="og:description" content="9 tracks. Faith-driven rap rooted in James 1:6-8. Dropping July 17." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://i.scdn.co/image/ab67616d0000b2738fefe2bbe166506b3410be6b" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;900&family=Geist+Mono:wght@400;500&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet" />
+
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+      :root {
+        --bg:        #07090e;
+        --bg2:       #0a0e18;
+        --navy:      #0d1520;
+        --blue-mid:  #1c2d42;
+        --blue:      #3a6080;
+        --blue-lt:   #7ab0d4;
+        --ice:       #c8e0f0;
+        --white:     #eaf4ff;
+        --text:      #b8cee0;
+        --text-dim:  #445566;
+        --border:    rgba(122,176,212,0.12);
+        --ease:      cubic-bezier(0.16,1,0.3,1);
+        --nav-h:     64px;
+        --font:      'Geist', sans-serif;
+        --mono:      'Geist Mono', monospace;
+        --tight:     'Inter Tight', sans-serif;
+      }
+
+      html { scroll-behavior: smooth; }
+      body { font-family: var(--font); background: var(--bg); color: var(--text); overflow-x: hidden; cursor: none; }
+      a { color: inherit; text-decoration: none; }
+      img { display: block; max-width: 100%; }
+
+      /* LOADER */
+      .loader { position:fixed; inset:0; z-index:9999; background:var(--bg); display:flex; align-items:center; justify-content:center; transition:opacity .7s var(--ease),visibility .7s; }
+      .loader.hidden { opacity:0; visibility:hidden; pointer-events:none; }
+      .loader-inner { display:flex; flex-direction:column; align-items:center; gap:28px; }
+      .loader-wm { font-size:clamp(1.4rem,5vw,2.8rem); font-weight:900; letter-spacing:.1em; text-transform:uppercase; background:linear-gradient(90deg,var(--blue),var(--ice),var(--blue)); background-size:200%; -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; animation:shimmer 2s linear infinite; }
+      @keyframes shimmer { to { background-position:200% center; } }
+      .loader-bar { width:180px; height:1px; background:rgba(255,255,255,.06); }
+      .loader-fill { height:100%; width:0%; background:linear-gradient(90deg,var(--blue),var(--ice)); animation:loadbar 1.5s var(--ease) forwards; }
+      @keyframes loadbar { to { width:100%; } }
+
+      /* CURSOR */
+      .cursor-dot  { position:fixed; top:0; left:0; width:5px; height:5px; background:var(--blue-lt); border-radius:50%; pointer-events:none; z-index:9998; transform:translate(-50%,-50%); }
+      .cursor-ring { position:fixed; top:0; left:0; width:32px; height:32px; border:1px solid rgba(91,156,246,.35); border-radius:50%; pointer-events:none; z-index:9997; transform:translate(-50%,-50%); transition:width .2s,height .2s; }
+      .cursor-ring.hover { width:48px; height:48px; border-color:var(--blue-lt); }
+
+      /* SCROLL BAR */
+      .scroll-bar { position:fixed; top:0; left:0; height:2px; width:0%; background:linear-gradient(90deg,var(--blue),var(--ice)); z-index:9000; transition:width .1s linear; }
+
+      /* NAV */
+      .nav { position:fixed; top:0; left:0; right:0; height:var(--nav-h); z-index:800; display:flex; align-items:center; justify-content:space-between; padding:0 clamp(20px,4vw,60px); transition:background .4s,backdrop-filter .4s; }
+      .nav.scrolled { background:rgba(7,9,14,.92); backdrop-filter:blur(20px); border-bottom:1px solid var(--border); }
+      .nav-wm { font-size:.95rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; background:linear-gradient(90deg,var(--blue-lt),var(--ice)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+      .nav-links { display:flex; gap:28px; align-items:center; }
+      .nav-links a { font-size:.78rem; font-weight:500; letter-spacing:.08em; text-transform:uppercase; color:var(--text-dim); transition:color .2s; }
+      .nav-links a:hover { color:var(--white); }
+      .nav-links a.hot { color:var(--blue-lt); }
+      .nav-links a.active { color:var(--white); }
+
+      /* BUTTONS */
+      .btn { display:inline-flex; align-items:center; gap:8px; font-family:var(--font); font-size:.84rem; font-weight:700; letter-spacing:.07em; text-transform:uppercase; padding:14px 28px; border-radius:4px; cursor:none; transition:transform .2s var(--ease),box-shadow .2s; }
+      .btn:hover { transform:translateY(-2px); }
+      .btn-presave { background:linear-gradient(135deg,var(--blue-lt),#2a5570); color:#fff; border-radius:50px; box-shadow:0 8px 40px rgba(58,96,128,.45); position:relative; overflow:hidden; }
+      .btn-presave::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg,rgba(255,255,255,.15),transparent); opacity:0; transition:opacity .3s; }
+      .btn-presave:hover::before { opacity:1; }
+      .btn-presave:hover { box-shadow:0 14px 50px rgba(122,176,212,.4); transform:translateY(-3px); }
+      .btn-ghost { background:transparent; color:var(--text); border:1px solid rgba(255,255,255,.15); border-radius:4px; }
+      .btn-ghost:hover { border-color:var(--blue-lt); color:var(--blue-lt); }
+
+      /* REVEALS */
+      .rv-up    { opacity:0; transform:translateY(28px); transition:opacity .7s var(--ease),transform .7s var(--ease); }
+      .rv-scale { opacity:0; transform:scale(.94); transition:opacity .7s var(--ease),transform .7s var(--ease); }
+      .rv-up.v,.rv-scale.v { opacity:1; transform:none; }
+      [style*="--d"] { transition-delay:var(--d,0s); }
+
+      /* ─── ALBUM HERO ─────────────────────────────────── */
+      .album-hero {
+        min-height: 100svh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: calc(var(--nav-h) + 60px) clamp(20px,5vw,80px) clamp(80px,10vw,120px);
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(180deg, var(--bg) 0%, var(--navy) 55%, var(--bg2) 100%);
+      }
+
+      .hero-bg { position:absolute; inset:0; z-index:0; overflow:hidden; }
+      .blob { position:absolute; border-radius:50%; filter:blur(100px); animation:drift 14s ease-in-out infinite; }
+      .b1 { width:800px; height:800px; background:#0d1e35; opacity:.6; top:-300px; left:-200px; }
+      .b2 { width:500px; height:500px; background:#1a3050; opacity:.4; top:15%; right:-100px; animation-delay:-5s; }
+      .b3 { width:600px; height:600px; background:#050d20; opacity:.8; bottom:-200px; left:20%; animation-delay:-9s; }
+      .b4 { width:300px; height:300px; background:#3a6080; opacity:.12; bottom:25%; right:8%; animation-delay:-12s; }
+      @keyframes drift { 0%,100%{transform:translate(0,0) scale(1)} 33%{transform:translate(30px,-25px) scale(1.04)} 66%{transform:translate(-15px,18px) scale(.97)} }
+
+      .wave-rings { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; pointer-events:none; overflow:hidden; z-index:1; }
+      .wr { position:absolute; border-radius:50%; border:1px solid rgba(58,96,128,.14); animation:wex 4s ease-out infinite; }
+      .wr:nth-child(1){width:300px;height:300px;animation-delay:0s}
+      .wr:nth-child(2){width:550px;height:550px;animation-delay:1s}
+      .wr:nth-child(3){width:800px;height:800px;animation-delay:2s}
+      .wr:nth-child(4){width:1050px;height:1050px;animation-delay:3s}
+      @keyframes wex { 0%{opacity:.4;transform:scale(.8)} 100%{opacity:0;transform:scale(1.2)} }
+
+      .album-hero-inner { position:relative; z-index:2; max-width:740px; }
+
+      .album-eyebrow { font-family:var(--mono); font-size:.72rem; letter-spacing:.25em; text-transform:uppercase; color:var(--blue-lt); margin-bottom:20px; display:block; opacity:0; animation:fin .6s 1.8s forwards; }
+      @keyframes fin { to { opacity:1; } }
+
+      .album-title-big {
+        font-size: clamp(3.5rem,12vw,10rem);
+        font-weight: 900;
+        letter-spacing: .06em;
+        text-transform: uppercase;
+        line-height: 1;
+        background: linear-gradient(180deg,#fff 0%,var(--ice) 35%,var(--blue-lt) 65%,var(--blue) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 28px;
+        filter: drop-shadow(0 0 80px rgba(45,107,228,.45));
+        opacity: 0;
+        transform: translateY(24px);
+        animation: titleIn .9s var(--ease) 1.2s forwards;
+      }
+      @keyframes titleIn { to { opacity:1; transform:translateY(0); } }
+
+      .album-meta { font-family:var(--mono); font-size:.82rem; letter-spacing:.18em; color:var(--text); text-transform:uppercase; margin-bottom:40px; }
+      .album-meta span { color:var(--white); }
+
+      .album-verse {
+        background: rgba(58,96,128,.07);
+        border: 1px solid rgba(58,96,128,.2);
+        border-radius: 8px;
+        padding: clamp(22px,3vw,36px) clamp(24px,4vw,44px);
+        margin: 0 auto 36px;
+        text-align: left;
+      }
+      .album-verse-ref { font-family:var(--mono); font-size:.65rem; letter-spacing:.22em; text-transform:uppercase; color:var(--blue-lt); margin-bottom:12px; display:block; }
+      .album-verse-text { font-size:.92rem; line-height:1.8; color:var(--white); font-style:italic; }
+
+      .album-desc { font-size:clamp(.88rem,1.5vw,1rem); line-height:1.85; color:var(--white); margin-bottom:28px; text-align:left; }
+
+      .album-credits {
+        font-family: var(--mono);
+        font-size: .68rem;
+        letter-spacing: .1em;
+        text-transform: uppercase;
+        color: var(--text);
+        margin-bottom: 40px;
+        padding: 14px 20px;
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        display: inline-block;
+        line-height: 1.9;
+        text-align: left;
+      }
+      .album-credits span { color: var(--white); }
+
+      /* ─── TRACKLIST ──────────────────────────────────── */
+      .tracklist-sec {
+        background: var(--bg2);
+        padding: clamp(80px,10vw,140px) clamp(20px,5vw,80px);
+        position: relative;
+      }
+      .tracklist-sec::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(122,176,212,.18), transparent);
+      }
+
+      .tracklist-inner { max-width: 920px; margin: 0 auto; }
+
+      .tl-header { margin-bottom: 60px; }
+      .tl-label {
+        font-family: var(--mono);
+        font-size: .7rem;
+        letter-spacing: .2em;
+        text-transform: uppercase;
+        color: var(--blue-lt);
+        margin-bottom: 14px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+      .tl-label::after { content:''; flex:1; height:1px; background:var(--border); }
+      .tl-h { font-size:clamp(1.8rem,3.5vw,2.8rem); font-weight:900; color:var(--white); letter-spacing:-.02em; margin-bottom:8px; }
+      .tl-sub { font-size:.88rem; color:var(--text); font-family:var(--tight); }
+
+      /* Track rows */
+      .track-list { display:flex; flex-direction:column; }
+
+      .track {
+        display: grid;
+        grid-template-columns: 56px 1fr auto;
+        gap: 0 28px;
+        align-items: start;
+        padding: 32px 20px;
+        border-bottom: 1px solid var(--border);
+        position: relative;
+        transition: background .25s, padding .25s;
+        border-radius: 4px;
+        margin: 0 -20px;
+      }
+      .track:first-child { border-top: 1px solid var(--border); }
+      .track:hover { background: rgba(58,96,128,.05); }
+
+      .track-num {
+        font-family: var(--mono);
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--text-dim);
+        padding-top: 6px;
+        letter-spacing: .04em;
+        transition: color .3s;
+        line-height: 1;
+      }
+      .track:hover .track-num { color: var(--blue-lt); }
+
+      .track-body { min-width: 0; }
+
+      .track-title {
+        font-size: clamp(1.1rem, 2.4vw, 1.6rem);
+        font-weight: 900;
+        color: var(--white);
+        letter-spacing: -.01em;
+        line-height: 1.1;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+        transition: color .3s;
+      }
+      .track:hover .track-title { color: var(--ice); }
+
+      .track-tag {
+        font-family: var(--mono);
+        font-size: .63rem;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        color: var(--blue-lt);
+        margin-bottom: 12px;
+        display: inline-block;
+      }
+
+      .track-desc {
+        font-size: .89rem;
+        line-height: 1.78;
+        color: var(--text);
+        max-width: 600px;
+        margin-bottom: 18px;
+        transition: filter .4s, opacity .4s;
+      }
+
+      .track-listen {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-family: var(--mono);
+        font-size: .68rem;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+        color: var(--blue-lt);
+        border: 1px solid rgba(122,176,212,.28);
+        border-radius: 4px;
+        padding: 9px 16px;
+        transition: background .2s, color .2s, border-color .2s, transform .2s;
+        cursor: none;
+      }
+      .track-listen:hover { background:rgba(122,176,212,.1); color:var(--ice); border-color:rgba(122,176,212,.5); transform:translateY(-1px); }
+
+      .track-right {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 8px;
+        padding-top: 5px;
+        min-width: 80px;
+      }
+
+      /* Badges */
+      .track-badge {
+        font-family: var(--mono);
+        font-size: .6rem;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        padding: 5px 10px;
+        border-radius: 3px;
+        white-space: nowrap;
+      }
+      .badge-out  { background:rgba(29,185,84,.1);  color:#4cd87a; border:1px solid rgba(29,185,84,.22); }
+      .badge-next { background:rgba(122,176,212,.12); color:var(--blue-lt); border:1px solid rgba(122,176,212,.28); }
+      .badge-soon { background:rgba(28,45,66,.6); color:var(--text-dim); border:1px solid rgba(58,96,128,.2); }
+
+      /* ── LOCKED / UNRELEASED STATE ── */
+      .track.locked { opacity: .5; }
+      .track.locked .track-title { color: var(--text); letter-spacing:.25em; font-size:clamp(.9rem,2vw,1.2rem); }
+      .track.locked .track-desc  { filter:blur(4px); opacity:.6; user-select:none; pointer-events:none; }
+      .track.locked .track-listen { display:none; }
+      .track.locked .track-tag   { display:none; }
+
+      /* INTERLUDE */
+      .track.interlude .track-title { font-size:clamp(.95rem,1.8vw,1.2rem); letter-spacing:.04em; }
+
+      /* ─── CLOSING CTA ─────────────────────────────────── */
+      .cta-sec {
+        background: var(--navy);
+        padding: clamp(80px,10vw,120px) clamp(20px,5vw,80px);
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .cta-sec::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 60% 60% at 50% 50%,rgba(45,107,228,.1),transparent 70%); pointer-events:none; }
+      .cta-inner { position:relative; max-width:560px; margin:0 auto; }
+      .cta-h { font-size:clamp(1.4rem,2.8vw,2rem); font-weight:700; color:var(--white); letter-spacing:-.02em; line-height:1.2; margin-bottom:10px; }
+      .cta-s { font-size:.9rem; color:var(--text); margin-bottom:32px; font-family:var(--tight); }
+
+      /* ─── FOOTER ─────────────────────────────────────── */
+      .footer { background:#030508; border-top:1px solid var(--border); padding:44px clamp(20px,5vw,80px); }
+      .footer-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:20px; }
+      .footer-inner .fi { text-align:right; }
+      .fw { font-size:.9rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; background:linear-gradient(90deg,var(--blue-lt),var(--ice)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+      .fsoc { display:flex; gap:18px; align-items:center; }
+      .fsoc a { color:var(--text-dim); transition:color .2s,transform .2s; display:flex; }
+      .fsoc a:hover { color:var(--blue-lt); transform:translateY(-2px); }
+      .fi { font-size:.74rem; color:var(--text-dim); font-family:var(--mono); letter-spacing:.05em; }
+
+      /* ─── MOBILE ──────────────────────────────────────── */
+      @media (max-width:767px) {
+        body { cursor:auto; }
+        .cursor-dot,.cursor-ring { display:none; }
+        .nav-links { gap:14px; }
+        .nav-links a { font-size:.68rem; }
+        .album-title-big { font-size:clamp(3rem,16vw,6rem); }
+        .track { grid-template-columns: 44px 1fr; gap:0 16px; padding:24px 12px; margin:0 -12px; }
+        .track-right { display:none; }
+        .track-desc { font-size:.84rem; }
+        .footer-inner { grid-template-columns:1fr; justify-items:center; gap:14px; }
+        .footer-inner .fi { text-align:center; }
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- LOADER -->
+    <div class="loader" id="loader">
+      <div class="loader-inner">
+        <div class="loader-wm">WAVES</div>
+        <div class="loader-bar"><div class="loader-fill"></div></div>
+      </div>
+    </div>
+
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+    <div class="scroll-bar" id="scrollBar"></div>
+
+    <!-- NAV -->
+    <nav class="nav" id="nav">
+      <a href="index.html" class="nav-wm">BigGucciDame</a>
+      <div class="nav-links">
+        <a href="index.html#waves" class="hot">WAVES ↗</a>
+        <a href="songs.html" class="active">Songs</a>
+        <a href="index.html#music">Music</a>
+        <a href="index.html#videos">Videos</a>
+        <a href="index.html#about">About</a>
+      </div>
+    </nav>
+
+    <!-- ══════════════════════════════════════
+         ALBUM HERO
+    ══════════════════════════════════════ -->
+    <section class="album-hero">
+      <div class="hero-bg">
+        <div class="blob b1"></div><div class="blob b2"></div>
+        <div class="blob b3"></div><div class="blob b4"></div>
+      </div>
+      <div class="wave-rings">
+        <div class="wr"></div><div class="wr"></div><div class="wr"></div><div class="wr"></div>
+      </div>
+
+      <div class="album-hero-inner">
+        <span class="album-eyebrow">The Album · 9 Tracks · July 17, 2026</span>
+        <div class="album-title-big">WAVES</div>
+        <p class="album-meta rv-up">Florida · Christian Hip-Hop · <span>Out July 17</span></p>
+
+        <div class="album-verse rv-up">
+          <span class="album-verse-ref">James 1:6–8 · The Inspiration</span>
+          <p class="album-verse-text">"But let him ask in faith, with no doubting, for the one who doubts is like a wave of the sea that is driven and tossed by the wind. For that person must not suppose that he will receive anything from the Lord; he is a double-minded man, unstable in all his ways."</p>
+        </div>
+
+        <p class="album-desc rv-up">
+          Who names an album "WAVES"? Definitely not me lol. I wanted to call this project WAVES because of this Bible verse — James 1:6-8. I felt like this project truly represented me in what I was going through, as well as many friends who were going through a similar season. In life there's ups and downs and at times a person can be double-minded and unstable when there's so much going on, and I think this project truly represented that.
+          <br /><br />
+          I can't thank you enough for being here. I pray and hope you enjoy the album as much as I did when making it.
+        </p>
+
+        <div class="rv-up">
+          <div class="album-credits">
+            Fully Mixed &amp; Mastered by <span>Gabe</span><br />
+            Produced by <span>BigGucciDame</span>, <span>Caleb Osorio</span> &amp; <span>Owen Rich</span>
+          </div>
+        </div>
+
+        <div class="rv-up">
+          <a href="https://open.spotify.com/prerelease/6a1LkbzPNVEwSV0jAz0SCN?si=b1615d828d384bee" target="_blank" rel="noopener" class="btn btn-presave" style="font-size:.95rem;padding:17px 44px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+            Pre-Save on Spotify
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         TRACKLIST
+    ══════════════════════════════════════ -->
+    <section class="tracklist-sec">
+      <div class="tracklist-inner">
+
+        <div class="tl-header rv-up">
+          <div class="tl-label">Tracklist</div>
+          <h2 class="tl-h">9 Tracks</h2>
+          <p class="tl-sub">Songs unlock as they release. Check back as each one drops.</p>
+        </div>
+
+        <div class="track-list">
+
+          <!-- 01 · WAVES -->
+          <div class="track rv-up" data-release="2026-07-17T00:00:00-05:00">
+            <div class="track-num">01</div>
+            <div class="track-body">
+              <div class="track-title">WAVES</div>
+              <p class="track-desc">Might be one of my favorites on the album. I've performed it live and even had others listen to this song and they all say it's the one. I wrote this song about still failing as a believer but still trying to be present, and be a help for others while needing God yourself — knowing that sanctification is a lifelong process.</p>
+            </div>
+            <div class="track-right">
+              <span class="track-badge badge-soon">July 17</span>
+            </div>
+          </div>
+
+          <!-- 02 · STAY CONTENDING -->
+          <div class="track rv-up" data-release="2026-07-03T00:00:00-05:00" style="--d:.05s">
+            <div class="track-num">02</div>
+            <div class="track-body">
+              <div class="track-title">STAY CONTENDING</div>
+              <p class="track-desc">This is all Caleb Osorio lol. This song was made over a beat I made and he was like nah it could hit harder — and he made a new beat over my already finished vocals and boom, here we are. This song is about fighting for the things that God has promised, and you not giving up on it.</p>
+            </div>
+            <div class="track-right">
+              <span class="track-badge badge-soon">July 3</span>
+            </div>
+          </div>
+
+          <!-- 03 · WASTE TIME -->
+          <div class="track rv-up" data-release="2026-07-10T00:00:00-05:00" style="--d:.08s">
+            <div class="track-num">03</div>
+            <div class="track-body">
+              <div class="track-title">WASTE TIME</div>
+              <p class="track-desc">The title of this song speaks for itself. At the current writing of this I'm 26 years old and at times you can feel like you're behind — but when you're aligned with Christ you're not behind at all or losing anything. You are right on track where you need to be, and this song is a reminder that he will keep and guide you as long as you rest and trust in him.</p>
+            </div>
+            <div class="track-right">
+              <span class="track-badge badge-soon">July 10</span>
+            </div>
+          </div>
+
+          <!-- 04 · OLD LENS (OUT NOW) -->
+          <div class="track rv-up" data-release="2025-01-01T00:00:00-05:00" style="--d:.11s">
+            <div class="track-num">04</div>
+            <div class="track-body">
+              <div class="track-title">OLD LENS</div>
+              <p class="track-desc">One of my more experimental songs in regards to my vocal takes. Funny enough this song title I got from talking on the phone with a friend — in that conversation we talked about how when living in the world your lens, or the way you see things, can be clouded. She said "OLD LENS" and since then that always stuck with me and I knew I wanted to make a song about that.</p>
+              <a href="https://open.spotify.com/track/4rINopdbpLkEaokXphw0d8" target="_blank" rel="noopener" class="track-listen">
+                <svg viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+                Listen on Spotify
+              </a>
+            </div>
+            <div class="track-right">
+              <span class="track-badge badge-out">Out Now</span>
+            </div>
+          </div>
+
+          <!-- 05 · CLT TO LGA -->
+          <div class="track rv-up" data-release="2026-06-12T00:00:00-05:00" style="--d:.14s">
+            <div class="track-num">05</div>
+            <div class="track-body">
+              <div class="track-title">CLT TO LGA</div>
+              <p class="track-desc">Man, explaining this song can really be a whole book. This song is based on two perspectives — highkey three. It's about me venting to a friend, then me fighting for a relationship that other parties have more input in, and that other party is dictating where the relationship is going. This song is one of my favorites because it's so real. Half of it isn't even really about me — it's just me telling my friend's story. And I felt that we all could relate to it.</p>
+            </div>
+            <div class="track-right">
+              <span class="track-badge badge-next">June 12</span>
+            </div>
+          </div>
+
+          <!-- 06 · JADED -->
+          <div class="track rv-up" data-release="2026-07-17T00:00:00-05:00" style="--d:.17s">
+            <div class="track-num">06</div>
+            <div class="track-body">
+              <div class="track-title">JADED</div>
+              <p class="track-desc">This song is about being jaded and not wanting to wait — and being lost in what the true purpose of waiting is.</p>
+            </div>
+            <div class="track-right">
+              <span class="track-badge badge-soon">July 17</span>
+            </div>
+          </div>
+
+          <!-- 07 · JAMES 1:6-8 (Interlude) -->
+          <div class="track interlude rv-up" data-release="2026-07-17T00:00:00-05:00" style="--d:.2s">
+            <div class="track-num">07</div>
+            <div class="track-body">
+              <span class="track-tag">Interlude</span>
+              <div class="track-title">JAMES 1:6-8</div>
+              <p class="track-desc">This is very dear to me because I got my Mom to talk on this interlude. The whole intent was for at least someone to feel blessed by this.</p>
+            </div>
+            <div class="track-right">
+              <span class="track-badge badge-soon">July 17</span>
+            </div>
+          </div>
+
+          <!-- 08 · STRESSIN -->
+          <div class="track rv-up" data-release="2026-07-17T00:00:00-05:00" style="--d:.23s">
+            <div class="track-num">08</div>
+            <div class="track-body">
+              <div class="track-title">STRESSIN</div>
+              <p class="track-desc">I wrote this song about being so anxious or expectant for an outcome that you use other outlets to cope instead of just trying and waiting on God.</p>
+            </div>
+            <div class="track-right">
+              <span class="track-badge badge-soon">July 17</span>
+            </div>
+          </div>
+
+          <!-- 09 · LAST TIME -->
+          <div class="track rv-up" data-release="2026-07-17T00:00:00-05:00" style="--d:.26s">
+            <div class="track-num">09</div>
+            <div class="track-body">
+              <div class="track-title">LAST TIME</div>
+              <p class="track-desc">Cutting off the vices and coming back to God and surrendering it. This song is about telling God you're done with cycles of sin and wanting to start a new covenant with him. I felt like it was the perfect outro because I really wanted to story-tell with this project — and I think it brings this chapter into a great close.</p>
+            </div>
+            <div class="track-right">
+              <span class="track-badge badge-soon">July 17</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-sec">
+      <div class="cta-inner">
+        <p class="cta-h rv-up">Be first in the wave</p>
+        <p class="cta-s rv-up">Pre-save WAVES now and get notified the moment it drops July 17.</p>
+        <div class="rv-scale">
+          <a href="https://open.spotify.com/prerelease/6a1LkbzPNVEwSV0jAz0SCN?si=b1615d828d384bee" target="_blank" rel="noopener" class="btn btn-presave" style="font-size:1rem;padding:18px 52px;">
+            Pre-Save WAVES
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-inner">
+        <div class="fw">BigGucciDame</div>
+        <div class="fsoc">
+          <a href="https://open.spotify.com/artist/6mjDlBKzYcYavIYfOfQLKi" target="_blank" rel="noopener" aria-label="Spotify"><svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg></a>
+          <a href="https://music.apple.com/us/album/old-lens/1" target="_blank" rel="noopener" aria-label="Apple Music"><svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="m24 6.124c0-.029.001-.063.001-.097 0-.743-.088-1.465-.253-2.156l.013.063c-.312-1.291-1.1-2.359-2.163-3.031l-.02-.012c-.536-.35-1.168-.604-1.847-.723l-.03-.004c-.463-.084-1.003-.138-1.553-.15h-.011c-.04 0-.083-.01-.124-.013h-12.025c-.152.01-.3.017-.455.026-.791.016-1.542.161-2.242.415l.049-.015c-1.306.501-2.327 1.495-2.853 2.748l-.012.033c-.17.409-.297.885-.36 1.38l-.003.028c-.051.343-.087.751-.1 1.165v.016c0 .032-.007.062-.01.093v12.224c.01.14.017.283.027.424.02.861.202 1.673.516 2.416l-.016-.043c.609 1.364 1.774 2.387 3.199 2.792l.035.009c.377.111.817.192 1.271.227l.022.001c.555.053 1.11.06 1.667.06h11.028c.554 0 1.099-.037 1.633-.107l-.063.007c.864-.096 1.645-.385 2.321-.823l-.021.013c.825-.539 1.47-1.29 1.867-2.176l.013-.032c.166-.383.295-.829.366-1.293l.004-.031c.084-.539.132-1.161.132-1.794 0-.086-.001-.171-.003-.256v.013q0-5.7 0-11.394zm-6.424 3.99v5.712c.001.025.001.054.001.083 0 .407-.09.794-.252 1.14l.007-.017c-.273.562-.771.979-1.373 1.137l-.015.003c-.316.094-.682.156-1.06.173h-.01c-.029.002-.062.002-.096.002-1.033 0-1.871-.838-1.871-1.871 0-.741.431-1.382 1.056-1.685l.011-.005c.293-.14.635-.252.991-.32l.027-.004c.378-.082.758-.153 1.134-.24.264-.045.468-.252.51-.513v-.003c.013-.057.02-.122.02-.189 0-.002 0-.003 0-.005q0-2.723 0-5.443c-.001-.066-.01-.13-.027-.19l.001.005c-.026-.134-.143-.235-.283-.235-.006 0-.012 0-.018.001h.001c-.178.013-.34.036-.499.07l.024-.004q-1.14.225-2.28.456l-3.7.748c-.016 0-.032.01-.048.013-.222.03-.392.219-.392.447 0 .015.001.03.002.045v-.002.13q0 3.9 0 7.801c.001.028.001.062.001.095 0 .408-.079.797-.224 1.152l.007-.021c-.264.614-.792 1.072-1.436 1.235l-.015.003c-.319.096-.687.158-1.067.172h-.008c-.031.002-.067.003-.104.003-.913 0-1.67-.665-1.815-1.536l-.001-.011c-.02-.102-.031-.218-.031-.338 0-.785.485-1.458 1.172-1.733l.013-.004c.315-.127.687-.234 1.072-.305l.036-.005c.287-.06.575-.116.86-.177.341-.05.6-.341.6-.693 0-.007 0-.015 0-.022v.001-.15q0-4.44 0-8.883c0-.002 0-.004 0-.007 0-.129.015-.254.044-.374l-.002.011c.066-.264.277-.466.542-.517l.004-.001c.255-.066.515-.112.774-.165.733-.15 1.466-.3 2.2-.444l2.27-.46c.67-.134 1.34-.27 2.01-.4.181-.042.407-.079.637-.104l.027-.002c.018-.002.04-.004.061-.004.27 0 .489.217.493.485.008.067.012.144.012.222v.001q0 2.865 0 5.732z"/></svg></a>
+          <a href="https://instagram.com/bigguccidame/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 20 20" width="20" height="20"><g transform="translate(-284,-7279)" fill-rule="evenodd"><path fill="currentColor" d="M289.869652,7279.12273 C288.241769,7279.19618 286.830805,7279.5942 285.691486,7280.72871 C284.548187,7281.86918 284.155147,7283.28558 284.081514,7284.89653 C284.035742,7285.90201 283.768077,7293.49818 284.544207,7295.49028 C285.067597,7296.83422 286.098457,7297.86749 287.454694,7298.39256 C288.087538,7298.63872 288.809936,7298.80547 289.869652,7298.85411 C298.730467,7299.25511 302.015089,7299.03674 303.400182,7295.49028 C303.645956,7294.859 303.815113,7294.1374 303.86188,7293.08031 C304.26686,7284.19677 303.796207,7282.27117 302.251908,7280.72871 C301.027016,7279.50685 299.5862,7278.67508 289.869652,7279.12273 M289.951245,7297.06748 C288.981083,7297.0238 288.454707,7296.86201 288.103459,7296.72603 C287.219865,7296.3826 286.556174,7295.72155 286.214876,7294.84312 C285.623823,7293.32944 285.819846,7286.14023 285.872583,7284.97693 C285.924325,7283.83745 286.155174,7282.79624 286.959165,7281.99226 C287.954203,7280.99968 289.239792,7280.51332 297.993144,7280.90837 C299.135448,7280.95998 300.179243,7281.19026 300.985224,7281.99226 C301.980262,7282.98483 302.473801,7284.28014 302.071806,7292.99991 C302.028024,7293.96767 301.865833,7294.49274 301.729513,7294.84312 C300.829003,7297.15085 298.757333,7297.47145 289.951245,7297.06748 M298.089663,7283.68956 C298.089663,7284.34665 298.623998,7284.88065 299.283709,7284.88065 C299.943419,7284.88065 300.47875,7284.34665 300.47875,7283.68956 C300.47875,7283.03248 299.943419,7282.49847 299.283709,7282.49847 C298.623998,7282.49847 298.089663,7283.03248 298.089663,7283.68956 M288.862673,7288.98792 C288.862673,7291.80286 291.150266,7294.08479 293.972194,7294.08479 C296.794123,7294.08479 299.081716,7291.80286 299.081716,7288.98792 C299.081716,7286.17298 296.794123,7283.89205 293.972194,7283.89205 C291.150266,7283.89205 288.862673,7286.17298 288.862673,7288.98792 M290.655732,7288.98792 C290.655732,7287.16159 292.140329,7285.67967 293.972194,7285.67967 C295.80406,7285.67967 297.288657,7287.16159 297.288657,7288.98792 C297.288657,7290.81525 295.80406,7292.29716 293.972194,7292.29716 C292.140329,7292.29716 290.655732,7290.81525 290.655732,7288.98792"/></g></svg></a>
+          <a href="https://twitter.com/dame_gucci" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="https://www.youtube.com/@bigguccidame" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+          <a href="https://www.tiktok.com/@.bigguccidame" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M21,2H3A1,1,0,0,0,2,3V21a1,1,0,0,0,1,1H21a1,1,0,0,0,1-1V3A1,1,0,0,0,21,2Zm-3.281,8.725h0c-.109.011-.219.016-.328.017A3.571,3.571,0,0,1,14.4,9.129v5.493a4.061,4.061,0,1,1-4.06-4.06c.085,0,.167.008.251.013v2a2.067,2.067,0,1,0-.251,4.119A2.123,2.123,0,0,0,12.5,14.649l.02-9.331h1.914A3.564,3.564,0,0,0,17.719,8.5Z"/></svg></a>
+        </div>
+        <div class="fi">© 2026 BigGucciDame · All Rights Reserved</div>
+      </div>
+    </footer>
+
+    <svg style="position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:9990;opacity:0.02;" aria-hidden="true">
+      <filter id="nf"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
+      <rect width="100%" height="100%" filter="url(#nf)"/>
+    </svg>
+
+    <script>
+      // LOADER
+      window.addEventListener('load', () => setTimeout(() => document.getElementById('loader').classList.add('hidden'), 1600));
+
+      // CURSOR
+      const dot=document.getElementById('cursorDot'), ring=document.getElementById('cursorRing');
+      let mx=0,my=0,rx=0,ry=0;
+      document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; dot.style.left=mx+'px'; dot.style.top=my+'px'; });
+      (function a(){ rx+=(mx-rx)*.12; ry+=(my-ry)*.12; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(a); })();
+      document.querySelectorAll('a,button,.btn,.track-listen').forEach(el => {
+        el.addEventListener('mouseenter',()=>ring.classList.add('hover'));
+        el.addEventListener('mouseleave',()=>ring.classList.remove('hover'));
+      });
+
+      // SCROLL BAR + NAV
+      const bar=document.getElementById('scrollBar'), nav=document.getElementById('nav');
+      window.addEventListener('scroll', () => {
+        bar.style.width=(window.scrollY/(document.body.scrollHeight-window.innerHeight)*100)+'%';
+        nav.classList.toggle('scrolled', window.scrollY>60);
+      }, {passive:true});
+
+      // SCROLL REVEALS
+      document.querySelectorAll('.rv-up,.rv-scale').forEach(el =>
+        new IntersectionObserver(entries => entries.forEach(e => e.isIntersecting && e.target.classList.add('v')), {threshold:.08}).observe(el)
+      );
+
+      // TRACK RELEASE LOGIC — lock unreleased tracks
+      const now = new Date();
+      document.querySelectorAll('.track[data-release]').forEach(track => {
+        const releaseDate = new Date(track.dataset.release);
+        if (now < releaseDate) {
+          track.classList.add('locked');
+          const titleEl = track.querySelector('.track-title');
+          if (titleEl) {
+            titleEl.textContent = '???';
+          }
+          // Swap badge to show locked state
+          const badge = track.querySelector('.track-badge');
+          if (badge) badge.classList.remove('badge-out');
+        }
+      });
+    </script>
+  </body>
+</html>
