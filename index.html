@@ -271,6 +271,11 @@
         .cd-unit { border-radius:8px !important; }
         .cd-unit::after { display:none !important; }
         .waves-big { font-size:clamp(3rem,16vw,6rem); letter-spacing:.03em; }
+
+        /* ── Mobile performance: drop GPU-heavy effects that cause jank ── */
+        .blob { animation:none; filter:blur(60px); opacity:.3; }
+        .hero-grain, .hero-scan, .wave-rings, .noise-overlay { display:none; }
+        .nav.scrolled { backdrop-filter:none; -webkit-backdrop-filter:none; background:rgba(7,9,14,.97); }
       }
     </style>
   </head>
@@ -515,7 +520,7 @@
       </div>
     </footer>
 
-    <svg style="position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:9990;opacity:0.02;" aria-hidden="true">
+    <svg class="noise-overlay" style="position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:9990;opacity:0.02;" aria-hidden="true">
       <filter id="nf"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
       <rect width="100%" height="100%" filter="url(#nf)"/>
     </svg>
@@ -524,19 +529,31 @@
       // LOADER
       window.addEventListener('load', () => setTimeout(() => document.getElementById('loader').classList.add('hidden'), 1600));
 
-      // CURSOR
-      const dot=document.getElementById('cursorDot'), ring=document.getElementById('cursorRing');
-      let mx=0,my=0,rx=0,ry=0;
-      document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; dot.style.left=mx+'px'; dot.style.top=my+'px'; });
-      (function a(){ rx+=(mx-rx)*.12; ry+=(my-ry)*.12; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(a); })();
-      document.querySelectorAll('a,button,.btn,.dsp').forEach(el => { el.addEventListener('mouseenter',()=>ring.classList.add('hover')); el.addEventListener('mouseleave',()=>ring.classList.remove('hover')); });
+      // Detect mobile/touch — skip desktop-only effects for smoother performance
+      const isMobile = window.matchMedia('(max-width: 767px)').matches;
 
-      // SCROLL
-      const bar=document.getElementById('scrollBar'), nav=document.getElementById('nav');
+      // CURSOR (desktop only — RAF loop is wasted on touch devices)
+      if (!isMobile) {
+        const dot=document.getElementById('cursorDot'), ring=document.getElementById('cursorRing');
+        let mx=0,my=0,rx=0,ry=0;
+        document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; dot.style.left=mx+'px'; dot.style.top=my+'px'; });
+        (function a(){ rx+=(mx-rx)*.12; ry+=(my-ry)*.12; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(a); })();
+        document.querySelectorAll('a,button,.btn,.dsp').forEach(el => { el.addEventListener('mouseenter',()=>ring.classList.add('hover')); el.addEventListener('mouseleave',()=>ring.classList.remove('hover')); });
+      }
+
+      // SCROLL — rAF-throttled so work happens at most once per frame
+      const bar=document.getElementById('scrollBar'), nav=document.getElementById('nav'), heroPort=document.getElementById('heroPort');
+      let scrollQueued=false;
       window.addEventListener('scroll', () => {
-        bar.style.width=(window.scrollY/(document.body.scrollHeight-window.innerHeight)*100)+'%';
-        nav.classList.toggle('scrolled', window.scrollY>60);
-        if(window.scrollY<window.innerHeight) document.getElementById('heroPort').style.transform=`translateY(${window.scrollY*.3}px)`;
+        if(scrollQueued) return;
+        scrollQueued=true;
+        requestAnimationFrame(() => {
+          const y=window.scrollY;
+          bar.style.width=(y/(document.body.scrollHeight-window.innerHeight)*100)+'%';
+          nav.classList.toggle('scrolled', y>60);
+          if(!isMobile && y<window.innerHeight) heroPort.style.transform=`translateY(${y*.3}px)`;
+          scrollQueued=false;
+        });
       }, {passive:true});
 
       // REVEALS
