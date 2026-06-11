@@ -37,8 +37,8 @@
         --tight:     'Inter Tight', sans-serif;
       }
 
-      html { scroll-behavior: smooth; }
-      body { font-family: var(--font); background: var(--bg); color: var(--text); overflow-x: hidden; cursor: none; }
+      html { scroll-behavior: smooth; overflow-x: clip; }
+      body { font-family: var(--font); background: var(--bg); color: var(--text); overflow-x: clip; max-width: 100%; cursor: none; }
       a { color: inherit; text-decoration: none; }
       img { display: block; max-width: 100%; }
 
@@ -340,8 +340,8 @@
 
       /* ─── MOBILE ──────────────────────────────────────── */
       @media (max-width:767px) {
-        html, body { overscroll-behavior-x: none; }
-        body { cursor:auto; touch-action: pan-y; }
+        html, body { overscroll-behavior: none; overflow-x: clip; max-width: 100%; touch-action: pan-y; }
+        body { cursor:auto; }
         .cursor-dot,.cursor-ring { display:none; }
         .nav-links { gap:10px; }
         .nav-links a { display:none; font-size:.75rem; }
