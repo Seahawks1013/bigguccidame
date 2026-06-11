@@ -252,11 +252,15 @@
 
       /* MOBILE */
       @media (max-width:767px) {
-        body { cursor:auto; }
+        html, body { overscroll-behavior-x: none; }
+        body { cursor:auto; touch-action: pan-y; }
         .cursor-dot,.cursor-ring { display:none; }
-        .nav-links { gap:14px; }
-        .nav-links a { font-size:.7rem; }
-        .hero-title { font-size:clamp(2rem,12vw,5rem); white-space:normal; }
+        .nav-links { gap:10px; }
+        .nav-links a:not(.hot) { display:none; }
+        .nav-links a { font-size:.75rem; }
+        .hero-title { font-size:clamp(1.8rem,9vw,3.6rem); white-space:normal; text-align:center; }
+        .hero-pre { text-align:center; white-space:nowrap; letter-spacing:.1em; font-size:.65rem; }
+        .hero-cta { justify-content:center; }
         .song-grid { grid-template-columns:1fr; }
         .about-grid { grid-template-columns:1fr; }
         .about-vis { display:none; }
