@@ -341,10 +341,12 @@
 
       /* ─── MOBILE ──────────────────────────────────────── */
       @media (max-width:767px) {
-        body { cursor:auto; }
+        html, body { overscroll-behavior-x: none; }
+        body { cursor:auto; touch-action: pan-y; }
         .cursor-dot,.cursor-ring { display:none; }
-        .nav-links { gap:14px; }
-        .nav-links a { font-size:.68rem; }
+        .nav-links { gap:10px; }
+        .nav-links a { display:none; font-size:.75rem; }
+        .nav-links a.hot, .nav-links a.nav-songs { display:inline-flex; }
         .album-title-big { font-size:clamp(3rem,16vw,6rem); }
         .track { grid-template-columns: 44px 1fr; gap:0 16px; padding:24px 12px; margin:0 -12px; }
         .track-right { display:none; }
@@ -372,8 +374,8 @@
     <nav class="nav" id="nav">
       <a href="index.html" class="nav-wm">BigGucciDame</a>
       <div class="nav-links">
-        <a href="index.html#waves" class="hot">WAVES ↗</a>
-        <a href="songs.html" class="active">Songs</a>
+        <a href="index.html#waves" class="hot">WAVES</a>
+        <a href="songs.html" class="active nav-songs">Songs</a>
         <a href="index.html#music">Music</a>
         <a href="index.html#videos">Videos</a>
         <a href="index.html#about">About</a>
