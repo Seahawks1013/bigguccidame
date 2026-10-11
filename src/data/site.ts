@@ -18,6 +18,7 @@ export const latestRelease = {
   artists: 'BigGucciDame & Austin Joyce',
   year: 2026,
   spotifyAlbumId: '1c9qq8iJ2roY1BwpC7OIj2',
+  spotifyTrackId: '6GEFjYygRlVesLJUCUjepj',
   links: [
     { name: 'spotify', label: 'Spotify', href: 'https://open.spotify.com/album/1c9qq8iJ2roY1BwpC7OIj2' },
     { name: 'apple', label: 'Apple Music', href: 'https://music.apple.com/us/album/birds-of-a-feather-single/6816229713' },

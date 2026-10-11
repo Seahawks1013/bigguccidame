@@ -101,19 +101,6 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
         }
       }, { threshold: .12, rootMargin: '0px 0px -40px 0px' });
       document.querySelectorAll('.rv').forEach((el) => io.observe(el));
-
-      // SPOTIFY — player loads only when tapped (saves ~1 MB of third-party JS per embed)
-      document.addEventListener('click', (ev) => {
-        const btn = (ev.target as Element).closest<HTMLButtonElement>('.sp-load');
-        if (!btn) return;
-        const box = btn.parentElement!;
-        const frame = document.createElement('iframe');
-        frame.src = box.dataset.src!;
-        frame.title = box.dataset.title!;
-        frame.allow = 'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture';
-        frame.referrerPolicy = 'strict-origin-when-cross-origin';
-        box.replaceChildren(frame);
-      });
     </script>
   </body>
 </html>
