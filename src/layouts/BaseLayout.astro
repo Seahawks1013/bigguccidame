@@ -1,0 +1,119 @@
+---
+import '@fontsource-variable/geist';
+import '@fontsource-variable/geist-mono';
+import geistLatin from '@fontsource-variable/geist/files/geist-latin-wght-normal.woff2?url';
+import '../styles/global.css';
+import Icon from '../components/Icon.astro';
+import { path, socials } from '../data/site';
+
+interface Props {
+  title: string;
+  description: string;
+  ogDescription?: string;
+  ogImage?: string;
+  /** Which nav link is highlighted */
+  active?: 'waves' | 'songs';
+  /** Home page: section links stay as in-page anchors */
+  isHome?: boolean;
+  /** Link-in-bio style page: no nav or footer */
+  bare?: boolean;
+}
+
+const {
+  title,
+  description,
+  ogDescription = description,
+  ogImage = 'https://i.scdn.co/image/ab67616d0000b2738fefe2bbe166506b3410be6b',
+  active,
+  isHome = false,
+  bare = false,
+} = Astro.props;
+
+const home = isHome ? '' : path('/');
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#07090e" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={ogDescription} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:image" content={ogImage} />
+    <link rel="preload" href={geistLatin} as="font" type="font/woff2" crossorigin />
+  </head>
+  <body>
+    {!bare && (
+      <>
+        <div class="nav-sentinel" id="navSentinel"></div>
+        <nav class="nav" id="nav" aria-label="Main">
+          <a href={isHome ? '#hero' : path('/')} class="nav-wm grad-text">BigGucciDame</a>
+          <div class="nav-links">
+            <a href={`${home}#waves`} class:list={{ active: active === 'waves' }}>WAVES</a>
+            <a href={path('/songs/')} class:list={{ active: active === 'songs' }}>Songs</a>
+            <a href={`${home}#music`} class="nav-hide-sm">Music</a>
+            <a href={`${home}#videos`} class="nav-hide-sm">Videos</a>
+            <a href={`${home}#about`} class="nav-hide-sm">About</a>
+          </div>
+        </nav>
+      </>
+    )}
+
+    <slot />
+
+    {!bare && (
+      <footer class="footer">
+        <div class="footer-inner">
+          <div class="fw grad-text">BigGucciDame</div>
+          <div class="fsoc">
+            {socials.map((s) => (
+              <a href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label}><Icon name={s.name} /></a>
+            ))}
+          </div>
+          <div class="fi">© 2026 BigGucciDame · <a href={path('/socials/')}>All links</a></div>
+        </div>
+      </footer>
+    )}
+
+    <script>
+      // NAV tint once the page scrolls (observer instead of a scroll listener)
+      const nav = document.getElementById('nav');
+      const sentinel = document.getElementById('navSentinel');
+      if (nav && sentinel) {
+        new IntersectionObserver(([e]) => nav.classList.toggle('scrolled', !e.isIntersecting)).observe(sentinel);
+      }
+
+      // SCROLL REVEALS — reveal once, then stop observing
+      const io = new IntersectionObserver((entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) { e.target.classList.add('v'); io.unobserve(e.target); }
+        }
+      }, { threshold: .12, rootMargin: '0px 0px -40px 0px' });
+      document.querySelectorAll('.rv').forEach((el) => io.observe(el));
+
+      // SPOTIFY — player loads only when tapped (saves ~1 MB of third-party JS per embed)
+      document.addEventListener('click', (ev) => {
+        const btn = (ev.target as Element).closest<HTMLButtonElement>('.sp-load');
+        if (!btn) return;
+        const box = btn.parentElement!;
+        const frame = document.createElement('iframe');
+        frame.src = box.dataset.src!;
+        frame.title = box.dataset.title!;
+        frame.allow = 'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture';
+        frame.referrerPolicy = 'strict-origin-when-cross-origin';
+        box.replaceChildren(frame);
+      });
+    </script>
+  </body>
+</html>

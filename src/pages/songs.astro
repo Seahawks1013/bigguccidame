@@ -1,0 +1,147 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+import SpotifyEmbed from '../components/SpotifyEmbed.astro';
+import { links, tracks } from '../data/site';
+---
+<BaseLayout
+  title="WAVES · Tracklist — BigGucciDame"
+  description="WAVES — 9 tracks, out now. Fully Mixed & Mastered. Florida Christian Hip-Hop."
+  ogDescription="9 tracks. Faith-driven rap rooted in James 1:6-8. Out now."
+  active="songs"
+>
+  <main>
+    <!-- ALBUM HERO -->
+    <section class="album-hero">
+      <div class="album-hero-inner">
+        <span class="album-eyebrow enter">The Album · 9 Tracks · Out Now</span>
+        <h1 class="album-title-big enter-2">WAVES</h1>
+        <p class="album-meta enter-3">Florida · Christian Hip-Hop · <span>Released July 17, 2026</span></p>
+
+        <div class="album-verse rv">
+          <span class="album-verse-ref">James 1:6–8 · The Inspiration</span>
+          <p class="album-verse-text">"But let him ask in faith, with no doubting, for the one who doubts is like a wave of the sea that is driven and tossed by the wind. For that person must not suppose that he will receive anything from the Lord; he is a double-minded man, unstable in all his ways."</p>
+        </div>
+
+        <p class="album-desc rv">
+          Who names an album "WAVES"? Definitely not me lol. I wanted to call this project WAVES because of this Bible verse — James 1:6-8. I felt like this project truly represented me in what I was going through, as well as many friends who were going through a similar season. In life there's ups and downs and at times a person can be double-minded and unstable when there's so much going on, and I think this project truly represented that.
+          <br /><br />
+          I can't thank you enough for being here. I pray and hope you enjoy the album as much as I did when making it.
+        </p>
+
+        <div class="rv">
+          <div class="album-credits">
+            Fully Mixed &amp; Mastered by <span>Gabe</span><br />
+            Produced by <span>BigGucciDame</span>, <span>Caleb Osorio</span> &amp; <span>Owen Rich</span>
+          </div>
+        </div>
+
+        <div class="rv">
+          <a href={links.wavesSpotify} target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg">
+            <Icon name="spotify" /> Listen on Spotify
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRACKLIST -->
+    <section class="tracklist-sec">
+      <div class="tracklist-inner">
+        <div class="tl-header rv">
+          <div class="tl-label">Tracklist</div>
+          <h2 class="tl-h">{tracks.length} Tracks</h2>
+          <p class="tl-sub">The story behind every song, in Dame's words.</p>
+        </div>
+
+        <ol class="track-list">
+          {tracks.map((t) => (
+            <li class:list={['track', 'rv', { interlude: 'tag' in t }]}>
+              <div class="track-num">{t.n}</div>
+              <div class="track-body">
+                {'tag' in t && <span class="track-tag">{t.tag}</span>}
+                <h3 class="track-title">{t.title}</h3>
+                <p class="track-desc">{t.desc}</p>
+                <a href={'spotify' in t ? t.spotify : links.wavesSpotify} target="_blank" rel="noopener noreferrer" class="track-listen">
+                  <Icon name="spotify" size={14} /> Listen on Spotify
+                </a>
+              </div>
+              <div class="track-right">
+                <span class="track-badge">Out Now</span>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-sec">
+      <div class="cta-inner">
+        <p class="cta-h rv">Ride the wave</p>
+        <p class="cta-s rv d1">Play the full album right here.</p>
+        <div class="rv rv-scale d2">
+          <SpotifyEmbed type="album" id="61OHhCOsd0YzmaDvowbCq5" title="WAVES" />
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<style is:global>
+  /* Songs page nav uses dimmer links */
+  .nav-links a { color:var(--text-dim); }
+  .nav-links a:hover { color:var(--white); }
+  .nav-links a.active { color:var(--blue-lt); }
+
+  /* ALBUM HERO */
+  .album-hero { min-height:100svh; display:flex; align-items:center; justify-content:center; text-align:center; padding:calc(var(--nav-h) + 60px) var(--pad-x) clamp(80px,10vw,120px); background:radial-gradient(ellipse 70% 50% at 50% 20%,rgba(58,96,128,.25),transparent 70%),linear-gradient(180deg, var(--bg) 0%, var(--navy) 55%, var(--bg2) 100%); }
+  .album-hero-inner { max-width:740px; }
+  .album-eyebrow { font-family:var(--mono); font-size:.72rem; letter-spacing:.25em; text-transform:uppercase; color:var(--blue-lt); margin-bottom:20px; display:block; }
+  .album-title-big { font-size:clamp(3.5rem,14vw,10rem); font-weight:900; letter-spacing:.06em; line-height:1; background:linear-gradient(180deg,#fff 0%,var(--ice) 35%,var(--blue-lt) 65%,var(--blue) 100%); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:28px; }
+  .album-meta { font-family:var(--mono); font-size:.82rem; letter-spacing:.18em; color:var(--text); text-transform:uppercase; margin-bottom:40px; }
+  .album-meta span { color:var(--white); }
+  .album-verse { background:rgba(58,96,128,.07); border:1px solid rgba(58,96,128,.2); border-radius:8px; padding:clamp(22px,3vw,36px) clamp(24px,4vw,44px); margin:0 auto 36px; text-align:left; }
+  .album-verse-ref { font-family:var(--mono); font-size:.65rem; letter-spacing:.22em; text-transform:uppercase; color:var(--blue-lt); margin-bottom:12px; display:block; }
+  .album-verse-text { font-size:.92rem; line-height:1.8; color:var(--white); font-style:italic; }
+  .album-desc { font-size:clamp(.88rem,1.5vw,1rem); line-height:1.85; color:var(--white); margin-bottom:28px; text-align:left; }
+  .album-credits { font-family:var(--mono); font-size:.68rem; letter-spacing:.1em; text-transform:uppercase; color:var(--text); margin-bottom:40px; padding:14px 20px; border:1px solid var(--border); border-radius:4px; display:inline-block; line-height:1.9; text-align:left; }
+  .album-credits span { color:var(--white); }
+
+  /* TRACKLIST */
+  .tracklist-sec { background:var(--bg2); padding:clamp(80px,10vw,140px) var(--pad-x); border-top:1px solid var(--border); }
+  .tracklist-inner { max-width:920px; margin:0 auto; }
+  .tl-header { margin-bottom:60px; }
+  .tl-label { font-family:var(--mono); font-size:.7rem; letter-spacing:.2em; text-transform:uppercase; color:var(--blue-lt); margin-bottom:14px; display:flex; align-items:center; gap:14px; }
+  .tl-label::after { content:''; flex:1; height:1px; background:var(--border); }
+  .tl-h { font-size:clamp(1.8rem,3.5vw,2.8rem); font-weight:900; color:var(--white); letter-spacing:-.02em; margin-bottom:8px; }
+  .tl-sub { font-size:.88rem; color:var(--text); }
+
+  .track-list { list-style:none; }
+  .track { display:grid; grid-template-columns:56px 1fr auto; gap:0 28px; align-items:start; padding:32px 20px; border-bottom:1px solid var(--border); transition:background-color .25s; border-radius:4px; margin:0 -20px; }
+  .track:first-child { border-top:1px solid var(--border); }
+  .track:hover { background:rgba(58,96,128,.05); }
+  .track-num { font-family:var(--mono); font-size:1rem; font-weight:700; color:var(--text-dim); padding-top:6px; transition:color .3s; line-height:1; }
+  .track:hover .track-num { color:var(--blue-lt); }
+  .track-body { min-width:0; }
+  .track-title { font-size:clamp(1.1rem,2.4vw,1.6rem); font-weight:900; color:var(--white); letter-spacing:-.01em; line-height:1.1; margin-bottom:10px; transition:color .3s; }
+  .track:hover .track-title { color:var(--ice); }
+  .track.interlude .track-title { font-size:clamp(.95rem,1.8vw,1.2rem); letter-spacing:.04em; }
+  .track-tag { font-family:var(--mono); font-size:.63rem; letter-spacing:.14em; text-transform:uppercase; color:var(--blue-lt); margin-bottom:12px; display:inline-block; }
+  .track-desc { font-size:.89rem; line-height:1.78; color:var(--text); max-width:600px; margin-bottom:18px; }
+  .track-listen { display:inline-flex; align-items:center; gap:8px; font-family:var(--mono); font-size:.68rem; letter-spacing:.12em; text-transform:uppercase; color:var(--blue-lt); border:1px solid rgba(122,176,212,.28); border-radius:4px; padding:9px 16px; transition:background-color .2s, color .2s, border-color .2s, transform .2s; }
+  .track-listen:hover { background:rgba(122,176,212,.1); color:var(--ice); border-color:rgba(122,176,212,.5); transform:translateY(-1px); }
+  .track-right { padding-top:5px; }
+  .track-badge { font-family:var(--mono); font-size:.6rem; letter-spacing:.14em; text-transform:uppercase; padding:5px 10px; border-radius:3px; white-space:nowrap; background:rgba(29,185,84,.1); color:#4cd87a; border:1px solid rgba(29,185,84,.22); }
+
+  /* CTA */
+  .cta-sec { background:radial-gradient(ellipse 60% 60% at 50% 50%,rgba(45,107,228,.1),transparent 70%),var(--navy); padding:clamp(80px,10vw,120px) var(--pad-x); text-align:center; }
+  .cta-inner { max-width:640px; margin:0 auto; }
+  .cta-h { font-size:clamp(1.4rem,2.8vw,2rem); font-weight:700; color:var(--white); letter-spacing:-.02em; margin-bottom:10px; }
+  .cta-s { font-size:.9rem; color:var(--text); margin-bottom:32px; }
+
+  @media (max-width:767px) {
+    .track { grid-template-columns:44px 1fr; gap:0 16px; padding:24px 12px; margin:0 -12px; }
+    .track-right { display:none; }
+    .track-desc { font-size:.84rem; }
+  }
+</style>
