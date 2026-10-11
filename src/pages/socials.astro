@@ -6,7 +6,6 @@ import SpotifyEmbed from '../components/SpotifyEmbed.astro';
 import { latestRelease, links, path } from '../data/site';
 
 import hero from '../assets/hero.webp';
-import cover from '../assets/birds-of-a-feather.webp';
 
 const profiles = [
   { name: 'spotify', label: 'Spotify', href: links.spotifyArtist },
@@ -53,16 +52,9 @@ const moreLinks = [
       <section aria-labelledby="rel-h">
         <h2 class="lk-lbl" id="rel-h">Latest Release <span class="lk-new">New</span></h2>
         <article class="rel">
-          <div class="rel-top">
-            <Image src={cover} alt={`${latestRelease.title} cover art`} class="rel-cover" widths={[120, 240]} sizes="120px" loading="eager" />
-            <div class="rel-info">
-              <p class="rel-title">{latestRelease.title}</p>
-              <p class="rel-artist">{latestRelease.artists}</p>
-              <span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
-            </div>
-          </div>
+          <!-- Spotify's player shows the cover, title and artists, so no separate header -->
           <div class="rel-player">
-            <SpotifyEmbed type="track" id={latestRelease.spotifyTrackId} title={latestRelease.title} slim eager />
+            <SpotifyEmbed type="track" id={latestRelease.spotifyTrackId} title={latestRelease.title} compact eager />
           </div>
           <div class="rel-links">
             {latestRelease.links.map((l) => (
@@ -131,22 +123,8 @@ const moreLinks = [
   @keyframes sheen { from { transform:translateX(-120%) skewX(-20deg); } to { transform:translateX(320%) skewX(-20deg); } }
   .rel { position:relative; overflow:hidden; border-radius:18px; padding:18px; border:1px solid rgba(122,176,212,.28); background:linear-gradient(160deg,rgba(28,45,66,.75),rgba(13,21,32,.9)); box-shadow:0 20px 60px rgba(0,0,0,.45), 0 0 0 1px rgba(255,255,255,.03) inset; animation:pop .9s var(--ease) .35s both; }
   .rel::after { content:''; position:absolute; top:0; bottom:0; left:0; width:35%; background:linear-gradient(90deg,transparent,rgba(200,224,240,.12),transparent); pointer-events:none; transform:translateX(-120%) skewX(-20deg); animation:sheen 1.4s ease-in-out 1.1s 1 both; }
-  .rel-top { display:flex; gap:18px; align-items:center; margin-bottom:16px; }
-  .rel-player { margin-bottom:12px; }
-  .rel-cover { width:104px; height:104px; border-radius:10px; object-fit:cover; flex-shrink:0; box-shadow:0 10px 30px rgba(0,0,0,.5); }
-  .rel-title { font-size:clamp(1.25rem,2.4vw,1.6rem); font-weight:800; color:var(--white); line-height:1.1; margin-bottom:6px; }
-  .rel-artist { font-size:.85rem; color:var(--text); margin-bottom:12px; }
+  .rel-player { margin-bottom:12px; border-radius:12px; overflow:hidden; }
 
-  /* equalizer — transform-only animation, 7 tiny bars */
-  @keyframes eq { 0%,100% { transform:scaleY(.3); } 50% { transform:scaleY(1); } }
-  .eq { display:flex; align-items:flex-end; gap:3px; height:20px; }
-  .eq i { width:3px; height:100%; border-radius:2px; background:var(--blue-lt); transform-origin:bottom; animation:eq 1.1s ease-in-out infinite; }
-  .eq i:nth-child(2) { animation-delay:-.3s; animation-duration:.9s; }
-  .eq i:nth-child(3) { animation-delay:-.6s; }
-  .eq i:nth-child(4) { animation-delay:-.15s; animation-duration:1.3s; }
-  .eq i:nth-child(5) { animation-delay:-.45s; animation-duration:.8s; }
-  .eq i:nth-child(6) { animation-delay:-.75s; }
-  .eq i:nth-child(7) { animation-delay:-.2s; animation-duration:1s; }
 
   /* Spotify full-width as the main action, the rest in two columns */
   .rel-links { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
@@ -187,6 +165,5 @@ const moreLinks = [
     .lk-name { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; }
     .lk-tag { margin-bottom:18px; }
     .lk-icons { justify-content:space-between; }
-    .rel-cover { width:84px; height:84px; }
   }
 </style>
