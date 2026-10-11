@@ -13,9 +13,12 @@ const profiles = [
   { name: 'youtube', label: 'YouTube', href: links.youtubeChannel },
   { name: 'instagram', label: 'Instagram', href: links.instagram },
   { name: 'tiktok', label: 'TikTok', href: links.tiktok },
+  // SoundCloud + booking live only on this page
+  { name: 'soundcloud', label: 'SoundCloud', href: 'https://soundcloud.com/user-325897329' },
 ] as const;
 
 const moreLinks = [
+  { label: 'Book BigGucciDame', sub: 'Send a booking request', href: 'https://docs.google.com/forms/d/e/1FAIpQLSftHyndC9D9y6tiphCccs-SCDB67Fp2aaLM3u68kBsYxfWbkw/viewform', external: true, booking: true },
   { label: 'WAVES — the album', sub: 'Out now on Spotify', href: links.wavesSpotify, external: true },
   { label: 'Tracklist & stories', sub: 'The story behind every song', href: path('/songs/') },
   { label: 'Official website', sub: 'Music, videos & more', href: path('/') },
@@ -73,9 +76,11 @@ const moreLinks = [
         <ul class="more">
           {moreLinks.map((l, i) => (
             <li class={`rv d${i + 1}`}>
-              <a href={l.href} {...(l.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})} class="more-a">
+              <a href={l.href} {...(l.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})} class:list={['more-a', { 'more-booking': 'booking' in l }]}>
                 <span class="more-ico" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                  {'booking' in l
+                    ? <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M9 16l2 2 4-4"/></svg>
+                    : <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>}
                 </span>
                 <span class="more-txt"><span class="more-label">{l.label}</span><span class="more-sub">{l.sub}</span></span>
                 <svg class="more-arrow" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
@@ -146,6 +151,9 @@ const moreLinks = [
   .more { list-style:none; display:grid; gap:10px; }
   .more-a { display:flex; align-items:center; gap:14px; padding:14px 16px; border-radius:14px; border:1px solid var(--border); background:rgba(13,21,32,.6); transition:border-color .2s, transform .25s var(--ease); }
   .more-a:hover { border-color:rgba(122,176,212,.4); transform:translateY(-2px); }
+  .more-booking { border-color:rgba(122,176,212,.35); background:linear-gradient(135deg,rgba(58,96,128,.28),rgba(13,21,32,.6)); }
+  .more-booking .more-ico { background:var(--blue-lt); color:var(--bg); }
+  .more-booking .more-label { color:var(--white); }
   .more-ico { width:38px; height:38px; display:grid; place-items:center; border-radius:50%; background:rgba(122,176,212,.1); color:var(--blue-lt); flex-shrink:0; }
   .more-txt { display:flex; flex-direction:column; gap:2px; min-width:0; }
   .more-label { color:var(--blue-lt); font-weight:600; font-size:.98rem; }
@@ -164,6 +172,8 @@ const moreLinks = [
     /* name is already on the photo; keep the h1 for screen readers only */
     .lk-name { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; }
     .lk-tag { margin-bottom:18px; }
-    .lk-icons { justify-content:space-between; }
+    /* all profile icons share one row */
+    .lk-icons { display:grid; grid-template-columns:repeat(auto-fit,minmax(40px,1fr)); gap:8px; }
+    .lk-icons a { width:100%; }
   }
 </style>
